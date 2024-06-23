@@ -56,16 +56,17 @@
     <div class="card" style="width: 40rem; height: 40rem;">
       <div class="card-body">
         <h1 class="fw-bold" style="color: white;">Iniciar Sesión</h1>
-        <form (ngSubmit)="login()">
+        <h5 style="color: white; border-bottom: 2px solid white; padding-bottom: 10px;">Revisa tus inmuebles publicados, los inmuebles que te interesan y mas...</h5>
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label fw-bold">Correo Electrónico</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                   placeholder="Ingresa tu correo electrónico..." [(ngModel)]="credentials.correo" name="correo" required>
+                   placeholder="Ingresa tu correo electrónico..." formControlName="correo" name="correo" required>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label fw-bold">Contraseña</label>
             <input type="password" class="form-control" id="exampleInputPassword1"
-                   placeholder="Ingresa tu contraseña..." [(ngModel)]="credentials.password" name="contraseña" required>
+                   placeholder="Ingresa tu contraseña..." formControlName="password" name="contraseña" required>
           </div>
           <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
@@ -78,6 +79,7 @@
     <div class="card" style="width: 40rem; height: 40rem;">
       <div class="card-body">
         <h1 class="fw-bold" style="color: white;">Registrarse</h1>
+        <h5 style="color: white; border-bottom: 2px solid white; padding-bottom: 30px;">Crea una cuenta para poder publicar tu inmueble</h5>
         <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
           <input type="radio" class="btn-check user-type" name="btnradio" id="btnradio1" autocomplete="off"
                  checked (change)="toggleForm('personaNatural')">
@@ -101,14 +103,16 @@
 
           <input type="radio" class="btn-check user-type" name="btnradio" id="btnradio3" autocomplete="off" (change)="toggleForm('empresarial')">
           <label class="btn btn-outline-primary" for="btnradio3">
-            Empresariales</label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building-fill" viewBox="0 0 16 16">
+              <path d="M3 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h3v-3.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V16h3a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm1 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5M4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM7.5 5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5m2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM4.5 8h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5m2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5"/>
+            </svg> Empresariales</label>
         </div>
 
 
         <!--Formulario persona natural-->
         <div *ngIf="selectedForm === 'personaNatural'" class="form-section mt-4">
           <div class="container mt-5">
-            <form class="row g-3" (ngSubmit)="register()">
+            <form class="row g-2" (ngSubmit)="register()">
               <div class="col-md-6">
                 <label for="inputNombrePersona" class="form-label fw-bold">Nombre</label>
                 <input type="text" class="form-control" id="inputNombrePersona" placeholder="Digita tu nombre..." [(ngModel)]="cliente.nombre" name="nombre" required>
@@ -122,6 +126,11 @@
                 <input type="email" class="form-control" id="inputEmailPersona"
                   placeholder="Digita tu correo electrónico..." [(ngModel)]="cliente.correo" name="correo" required>
               </div>
+              <div class="col-md-12">
+                <label for="inputTelefonoPersona" class="form-label fw-bold">Teléfono</label>
+                <input type="number" class="form-control" id="inputTelefonoPersona"
+                  placeholder="Digita tu numero telefonico..." [(ngModel)]="cliente.telefono" name="telefono" required>
+              </div>
               <div class="col-md-6">
                 <label for="inputPasswordPersona" class="form-label fw-bold">Contraseña</label>
                 <input type="password" class="form-control" id="inputPasswordPersona"
@@ -130,7 +139,7 @@
               <div class="col-md-6">
                 <label for="inputConfirmPasswordPersona" class="form-label fw-bold">Confirmar contraseña</label>
                 <input type="password" class="form-control" id="inputConfirmPasswordPersona"
-                  placeholder="Confirma tu contraseña..." [(ngModel)]="cliente.confirmPassword"name="confirmPassword" required>
+                  placeholder="Confirma tu contraseña..." [(ngModel)]="confirmPassword" name="confirmPassword" required>
               </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary">Registrarse</button>
@@ -140,33 +149,39 @@
         </div>
 
         <!--Formulario Pymes-->
-        <div *ngIf="selectedForm === 'pymes'" class="form-section mt-4">
+        <div *ngIf="selectedForm === 'pymes'" class="form-section mt-4" >
           <div class="container mt-5">
-            <form class="row g-3" (ngSubmit)="register()">
+            <form class="row g-2" (ngSubmit)="registerPymes()">
               <div class="col-md-6">
                 <label for="inputRazonSocialPymes" class="form-label fw-bold">Razón social</label>
                 <input type="text" class="form-control" id="inputRazonSocialPymes"
-                  placeholder="Digita la razón social...">
+                  placeholder="Digita la razón social..." [(ngModel)]="cliente.razon_social" name="razon_social">
               </div>
               <div class="col-md-6">
                 <label for="inputNITPymes" class="form-label fw-bold">NIT</label>
-                <input type="text" class="form-control" id="inputNITPymes" placeholder="Digita el NIT...">
+                <input type="text" class="form-control" id="inputNITPymes" placeholder="Digita el NIT..." [(ngModel)]="cliente.nit" name="nit">
               </div>
               <div class="col-md-12">
                 <label for="inputEmailPymes" class="form-label fw-bold">Correo electrónico</label>
                 <input type="email" class="form-control" id="inputEmailPymes"
-                  placeholder="Digita tu correo electrónico...">
+                  placeholder="Digita tu correo electrónico..." [(ngModel)]="cliente.correo" name="correo">
+              </div>
+              <div class="col-md-12">
+                <label for="inputTelefonoPersona" class="form-label fw-bold">Teléfono</label>
+                <input type="number" class="form-control" id="inputTelefonoPersona"
+                  placeholder="Digita tu numero telefonico..." [(ngModel)]="cliente.telefono" name="telefono" required>
               </div>
               <div class="col-md-6">
                 <label for="inputPasswordPymes" class="form-label fw-bold">Contraseña</label>
                 <input type="password" class="form-control" id="inputPasswordPymes"
-                  placeholder="Digita tu contraseña...">
+                  placeholder="Digita tu contraseña..." [(ngModel)]="cliente.password" name="password">
               </div>
               <div class="col-md-6">
                 <label for="inputConfirmPasswordPymes" class="form-label fw-bold">Confirmar contraseña</label>
                 <input type="password" class="form-control" id="inputConfirmPasswordPymes"
-                  placeholder="Confirma tu contraseña...">
+                  placeholder="Confirma tu contraseña..." [(ngModel)]="confirmPassword" name="confirmPassword">
               </div>
+              <div *ngIf="errorRegistro" class="alert alert-danger">{{ errorRegistro }}</div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary">Registrarse</button>
               </div>
@@ -177,30 +192,35 @@
         <!--Empresariales Form-->
         <div *ngIf="selectedForm === 'empresarial'" class="form-section mt-4">
           <div class="container mt-5">
-            <form class="row g-3" (ngSubmit)="register()">
+            <form class="row g-2" (ngSubmit)="registerEmpresariales()">
               <div class="col-md-6">
                 <label for="inputRazonSocialEmpresarial" class="form-label fw-bold">Razón social</label>
                 <input type="text" class="form-control" id="inputRazonSocialEmpresarial"
-                  placeholder="Digita la razón social...">
+                  placeholder="Digita la razón social..." [(ngModel)]="cliente.razon_social" name="razon_social">
               </div>
               <div class="col-md-6">
                 <label for="inputNITEmpresarial" class="form-label fw-bold">NIT</label>
-                <input type="text" class="form-control" id="inputNITEmpresarial" placeholder="Digita el NIT...">
+                <input type="text" class="form-control" id="inputNITEmpresarial" placeholder="Digita el NIT..." [(ngModel)]="cliente.nit" name="nit">
               </div>
               <div class="col-md-12">
                 <label for="inputEmailEmpresarial" class="form-label fw-bold">Correo electrónico</label>
                 <input type="email" class="form-control" id="inputEmailEmpresarial"
-                  placeholder="Digita tu correo electrónico...">
+                  placeholder="Digita tu correo electrónico..." [(ngModel)]="cliente.correo" name="correo">
+              </div>
+              <div class="col-md-12">
+                <label for="inputTelefonoPersona" class="form-label fw-bold">Teléfono</label>
+                <input type="number" class="form-control" id="inputTelefonoPersona"
+                  placeholder="Digita tu numero telefonico..." [(ngModel)]="cliente.telefono" name="telefono" required>
               </div>
               <div class="col-md-6">
                 <label for="inputPasswordEmpresarial" class="form-label fw-bold">Contraseña</label>
                 <input type="password" class="form-control" id="inputPasswordEmpresarial"
-                  placeholder="Digita tu contraseña...">
+                  placeholder="Digita tu contraseña..." [(ngModel)]="cliente.password" name="password">
               </div>
               <div class="col-md-6">
                 <label for="inputConfirmPasswordEmpresarial" class="form-label fw-bold">Confirmar contraseña</label>
                 <input type="password" class="form-control" id="inputConfirmPasswordEmpresarial"
-                  placeholder="Confirma tu contraseña...">
+                  placeholder="Confirma tu contraseña..." [(ngModel)]="confirmPassword" name="confirmPassword">
               </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary">Registrarse</button>

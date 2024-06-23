@@ -1,0 +1,7 @@
+<div *ngIf="cliente">
+    <h1>Perfil de Usuario</h1>
+    <p>Nombre: {{ cliente.nombre }}</p>
+    <p>Apellido: {{ cliente.apellido }}</p>
+    <p>Correo Electrónico: {{ cliente.correo }}</p>
+    <a (click)="logout()">Cerrar Sesión</a>
+</div>
