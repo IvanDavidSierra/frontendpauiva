@@ -111,6 +111,7 @@
 
         <!--Formulario persona natural-->
         <div *ngIf="selectedForm === 'personaNatural'" class="form-section mt-4">
+          <div *ngIf="errorRegistro" class="alert alert-danger">{{ errorRegistro }}</div>
           <div class="container mt-5">
             <form class="row g-2" (ngSubmit)="register()">
               <div class="col-md-6">
@@ -150,6 +151,7 @@
 
         <!--Formulario Pymes-->
         <div *ngIf="selectedForm === 'pymes'" class="form-section mt-4" >
+          <div *ngIf="errorRegistro" class="alert alert-danger">{{ errorRegistro }}</div>
           <div class="container mt-5">
             <form class="row g-2" (ngSubmit)="registerPymes()">
               <div class="col-md-6">
@@ -181,7 +183,6 @@
                 <input type="password" class="form-control" id="inputConfirmPasswordPymes"
                   placeholder="Confirma tu contraseña..." [(ngModel)]="confirmPassword" name="confirmPassword">
               </div>
-              <div *ngIf="errorRegistro" class="alert alert-danger">{{ errorRegistro }}</div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary">Registrarse</button>
               </div>
@@ -191,6 +192,7 @@
 
         <!--Empresariales Form-->
         <div *ngIf="selectedForm === 'empresarial'" class="form-section mt-4">
+          <div *ngIf="errorRegistro" class="alert alert-danger">{{ errorRegistro }}</div>
           <div class="container mt-5">
             <form class="row g-2" (ngSubmit)="registerEmpresariales()">
               <div class="col-md-6">
