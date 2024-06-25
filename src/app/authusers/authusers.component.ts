@@ -32,38 +32,6 @@ export class AuthusersComponent implements OnInit {
     private router: Router
   ) { }
 
-
-  ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      correo: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-  }
-
-  login() {
-    if (this.loginForm.valid) {
-      const correoControl = this.loginForm.get('correo');
-      const contraseñaControl = this.loginForm.get('password');
-      if (correoControl && contraseñaControl) {
-        const credentials = {
-          correo: correoControl.value,
-          password: contraseñaControl.value
-        };
-        this.authService.login(credentials).subscribe(
-          response => {
-            this.router.navigate(['/profile']);
-          },
-          error => {
-            console.error(error);
-            // Manejar el error en el inicio de sesión
-          }
-        );
-      } else {
-        console.error('Correo control not found in loginForm');
-      }
-    }
-  }
-
   toggleForm(selectedForm: string) {
     this.selectedForm = selectedForm;
   }
@@ -75,6 +43,41 @@ export class AuthusersComponent implements OnInit {
   irAInmueblesVentas() {
     this.router.navigate(['/inmueblesventas']);
   }
+
+  entrarAInmueblesArriendo(){
+    this.router.navigate(["/inmueblesarriendo"]);
+  }
+
+  ngOnInit(): void {
+      this.loginForm = this.formBuilder.group({
+        correo: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required]
+      });
+  }
+  
+    login() {
+      if (this.loginForm.valid) {
+        const correoControl = this.loginForm.get('correo');
+        const contraseñaControl = this.loginForm.get('password');
+        if (correoControl && contraseñaControl) {
+          const credentials = {
+            correo: correoControl.value,
+            password: contraseñaControl.value
+          };
+          this.authService.login(credentials).subscribe(
+            response => {
+              this.router.navigate(['/profile']);
+            },
+            error => {
+              console.error(error);
+              // Manejar el error en el inicio de sesión
+            }
+          );
+        } else {
+          console.error('Correo control not found in loginForm');
+        }
+      }
+    }
 
   register() {
     if (this.cliente.password.trim().toLowerCase() !== this.confirmPassword.trim().toLowerCase()) {

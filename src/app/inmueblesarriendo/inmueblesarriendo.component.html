@@ -27,15 +27,15 @@
               Inmuebles
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" >Venta</a></li>
-              <li><a class="dropdown-item" >Arriendo</a></li>
+              <li><a class="dropdown-item" (click)="irAInmueblesVentas()">Venta</a></li>
+              <li><a class="dropdown-item" (click)="entrarAInmueblesArriendo()">Arriendo</a></li>
             </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link active text-white fw-bold" href="#">Contacto</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-primary" style="background-color: #CAE8FF; color: black; border: none; position: relative; top: 5px; margin-left: 10px;">Iniciar Sesion</a>
+            <a (click)="navigateToAuthUsers()" class="btn btn-primary" style="background-color: #CAE8FF; color: black; border: none; position: relative; top: 5px; margin-left: 10px;" >Iniciar Sesion</a>
           </li>
         </ul>
       </div>

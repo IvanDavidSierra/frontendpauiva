@@ -9,10 +9,14 @@ import { Router } from '@angular/router';
 export class InmueblesventasComponent {
   constructor(private router: Router) { }
 
+  entrarAInmueblesArriendo(){
+    this.router.navigate(["/inmueblesarriendo"]);}
+
   navigateToAuthUsers() {
     this.router.navigate(['/authusers']);
   }
   irAInmueblesVentas(){
     this.router.navigate(['/inmueblesventas']);
   }
+  
 }
