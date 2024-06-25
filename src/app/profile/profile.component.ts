@@ -1,8 +1,6 @@
-// profile.component.ts
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { Clientes } from '../Modelos/clientes.modelo';
+
 
 @Component({
   selector: 'app-profile',
@@ -10,27 +8,15 @@ import { Clientes } from '../Modelos/clientes.modelo';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  cliente: Clientes | null = null;
+  user: any;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.getClienteActual()
-      .subscribe(
-        (cliente: Clientes | null) => {
-          this.cliente = cliente;
-          if (!cliente) {
-            this.router.navigate(['/authusers']);
-          }
-        },
-        (error: any) => {
-          console.error('Error al obtener el cliente actual:', error);
-        }
-      );
+    this.user = this.authService.getCurrentUser();
   }
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/authusers']);
   }
 }

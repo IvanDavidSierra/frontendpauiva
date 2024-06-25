@@ -1,73 +1,86 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, of, pipe, tap, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { Clientes } from './Modelos/clientes.modelo';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080/clientes';
-  private loggedIn = false;
-  private clienteActual: Clientes | null = null;
+  private currentUser: Clientes | null = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
+
+  login(credentials: { correo: string, password: string }): Observable<Clientes> {
+    return this.http.post<Clientes>(`${this.apiUrl}/login`, credentials).pipe(
+      tap((user: Clientes) => {
+        this.setCurrentUser(user);
+      }),
+      catchError(this.handleError<Clientes>('loginCliente'))
+    );
+  }
 
   registrarCliente(cliente: Clientes): Observable<Clientes> {
-    return this.http.post<Clientes>(`${this.apiUrl}/register`, cliente);
+    return this.http.post<Clientes>(`${this.apiUrl}/register`, cliente).pipe(
+      tap(user => this.setCurrentUser(user)),
+      catchError(this.handleError<Clientes>('registrarCliente'))
+    );
   }
 
   registrarClientePymes(cliente: Clientes): Observable<Clientes> {
-    return this.http.post<Clientes>(`${this.apiUrl}/register-pymes`, cliente);
+    return this.http.post<Clientes>(`${this.apiUrl}/register-pymes`, cliente).pipe(
+      tap(user => this.setCurrentUser(user)),
+      catchError(this.handleError<Clientes>('registrarClientePymes'))
+    );
   }
 
   registrarClienteEmpresariales(cliente: Clientes): Observable<Clientes> {
-    return this.http.post<Clientes>(`${this.apiUrl}/register-empresariales`, cliente);
-  }
-
-  isLoggedIn(): boolean {
-    return this.loggedIn;
-  }
-
-  loginCliente(correo: string, contraseña: string): Observable<any> {
-    const body = { correo, contraseña };
-    return this.http.post<any>(`${this.apiUrl}/login`, body)
-      .pipe(
-        tap(() => this.loggedIn = true),
-        catchError(error => {
-          this.loggedIn = false;
-          return of(null);
-        })
-      );
+    return this.http.post<Clientes>(`${this.apiUrl}/register-empresariales`, cliente).pipe(
+      tap(user => this.setCurrentUser(user)),
+      catchError(this.handleError<Clientes>('registrarClienteEmpresariales'))
+    );
   }
 
   getClienteActual(): Observable<Clientes | null> {
-    return this.http.get<Clientes>(`${this.apiUrl}/profile`)
-      .pipe(
-        catchError(() => of(null))
-      );
+    return this.http.get<Clientes>(`${this.apiUrl}/profile`).pipe(
+      catchError(() => of(null))
+    );
+  }
+
+  setCurrentUser(user: Clientes) {
+    this.currentUser = user;
+    localStorage.setItem('currentUser', JSON.stringify(user));
+  }
+
+  getCurrentUser(): Clientes | null {
+    if (!this.currentUser) {
+      const storedUser = localStorage.getItem('currentUser');
+      this.currentUser = storedUser ? JSON.parse(storedUser) as Clientes : null;
+    }
+    return this.currentUser;
   }
 
   logout() {
-    this.loggedIn = false;
-    this.clienteActual = null;
+    this.currentUser = null;
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/login']);
   }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      console.error('Error:', error.error.message);
-    } else {
-      console.error(
-        `Código de error ${error.status}, ` +
-        `Mensaje: ${error.error.message}`);
-    }
-    return throwError('Ocurrió un error al intentar procesar la solicitud. Por favor, intenta nuevamente más tarde.');
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed:`, error);
+      if (error instanceof HttpErrorResponse && error.status === 401) {
+        // Aquí puedes redirigir a la página de login o mostrar un mensaje de error al usuario
+        console.error('Unauthorized access. Redirecting to login page...');
+        this.router.navigate(['/authusers']);
+      }
+      return of(result as T);
+    };
   }
-
-
-
-
-
 }
+
 
 

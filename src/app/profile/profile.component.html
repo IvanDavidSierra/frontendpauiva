@@ -1,7 +1,11 @@
-<div *ngIf="cliente">
-    <h1>Perfil de Usuario</h1>
-    <p>Nombre: {{ cliente.nombre }}</p>
-    <p>Apellido: {{ cliente.apellido }}</p>
-    <p>Correo Electrónico: {{ cliente.correo }}</p>
-    <a (click)="logout()">Cerrar Sesión</a>
-</div>
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h1>Perfil de Usuario</h1>
+        <p><strong>Nombre:</strong> {{ user?.nombre }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ user?.correo }}</p>
+        <p><strong>Teléfono:</strong> {{ user?.telefono }}</p>
+        <button class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
+      </div>
+    </div>
+  </div>

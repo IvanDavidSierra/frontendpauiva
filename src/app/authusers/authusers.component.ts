@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Clientes } from '../Modelos/clientes.modelo';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Md5 } from 'ts-md5';
 
 @Component({
   selector: 'app-authusers',
@@ -22,23 +23,50 @@ export class AuthusersComponent implements OnInit {
   };
   confirmPassword: string = '';
   errorRegistro: string = '';
-  credentials: { correo: string; password: string } = {
-    correo: '',
-    password: ''
-  };
-
-
+  loginForm!: FormGroup;
   selectedForm: string = 'personaNatural';
 
-  constructor(private router: Router, private authService: AuthService) {}
-  ngOnInit() {
-    this.loginForm = new FormGroup({
-      correo: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) { }
+
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      correo: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     });
   }
-  loginForm!: FormGroup;
 
+  login() {
+    if (this.loginForm.valid) {
+      const correoControl = this.loginForm.get('correo');
+      const contraseñaControl = this.loginForm.get('password');
+      if (correoControl && contraseñaControl) {
+        const credentials = {
+          correo: correoControl.value,
+          password: contraseñaControl.value
+        };
+        this.authService.login(credentials).subscribe(
+          response => {
+            this.router.navigate(['/profile']);
+          },
+          error => {
+            console.error(error);
+            // Manejar el error en el inicio de sesión
+          }
+        );
+      } else {
+        console.error('Correo control not found in loginForm');
+      }
+    }
+  }
+
+  toggleForm(selectedForm: string) {
+    this.selectedForm = selectedForm;
+  }
 
   navigateToAuthUsers() {
     this.router.navigate(['/authusers']);
@@ -46,10 +74,6 @@ export class AuthusersComponent implements OnInit {
 
   irAInmueblesVentas() {
     this.router.navigate(['/inmueblesventas']);
-  }
-
-  toggleForm(selectedForm: string) {
-    this.selectedForm = selectedForm;
   }
 
   register() {
@@ -62,7 +86,7 @@ export class AuthusersComponent implements OnInit {
       .subscribe(
         response => {
           console.log('Cliente registrado:', response);
-          // Mostrar mensaje de éxito al usuario si es necesario
+          this.router.navigate(['/profile']); // Redirigir al perfil después de registrar cliente
           this.errorRegistro = ''; // Limpiar el mensaje de error en caso de éxito
         },
         error => {
@@ -77,61 +101,42 @@ export class AuthusersComponent implements OnInit {
       );
   }
 
-  registerPymes(){
+  registerPymes() {
     if (this.cliente.password.trim().toLowerCase() !== this.confirmPassword.trim().toLowerCase()) {
       console.error('Las contraseñas no coinciden');
       return;
     }
+
     this.authService.registrarClientePymes(this.cliente)
       .subscribe(
         response => {
           console.log('Cliente registrado:', response);
-          // Manejar la respuesta del servidor aquí, redirigir o mostrar mensajes según sea necesario
+          this.router.navigate(['/profile']); // Redirigir al perfil después de registrar cliente
         },
         error => {
           console.error('Error al registrar cliente:', error);
-          // Manejar errores de registro, mostrar mensajes de error al usuario si es necesario
         }
       );
   }
 
-  registerEmpresariales(){
+  registerEmpresariales() {
     if (this.cliente.password.trim().toLowerCase() !== this.confirmPassword.trim().toLowerCase()) {
       console.error('Las contraseñas no coinciden');
       return;
     }
+
     this.authService.registrarClienteEmpresariales(this.cliente)
       .subscribe(
         response => {
           console.log('Cliente registrado:', response);
-          // Manejar la respuesta del servidor aquí, redirigir o mostrar mensajes según sea necesario
+          this.router.navigate(['/profile']); // Redirigir al perfil después de registrar cliente
         },
         error => {
           console.error('Error al registrar cliente:', error);
         }
       );
   }
-
-  
-  login() {
-    const correo = this.loginForm?.get('correo')?.value;
-    const password = this.loginForm?.get('password')?.value;
-
-    if (correo && password) {
-      this.authService.loginCliente(correo, password)
-        .subscribe(
-          response => {
-            console.log('Cliente logueado:', response);
-            this.router.navigate(['/profile']);
-          },
-          error => {
-            console.error('Error al iniciar sesión:', error);
-          }
-        );
-    } else {
-      console.error('Formulario de inicio de sesión no válido');
-    }
-  }
 }
+
 
 
