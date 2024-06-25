@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
+import { InmueblesarriendoComponent } from './inmueblesarriendo/inmueblesarriendo.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ProfileComponent } from './profile/profile.component';
     AuthusersComponent,
     InmueblesventasComponent,
     ProfileComponent,
+    InmueblesarriendoComponent,
   ],
   imports: [
     BrowserModule,

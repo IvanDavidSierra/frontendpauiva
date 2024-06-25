@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { InmueblesventasComponent } from './inmueblesventas/inmueblesventas.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './auth.guard';
+import { InmueblesarriendoComponent } from './inmueblesarriendo/inmueblesarriendo.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'authusers', component: AuthusersComponent },
   { path: 'inmueblesventas', component: InmueblesventasComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'inmueblesarriendo', component: InmueblesarriendoComponent},
   { path: '**', redirectTo: '' } 
 ];
 

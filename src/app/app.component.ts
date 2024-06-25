@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(private router: Router) { }
+  entrarAInmueblesArriendo(){this.router.navigate(["/inmueblesarriendo"]);}
 
   navigateToAuthUsers() {
     this.router.navigate(['/authusers']);
