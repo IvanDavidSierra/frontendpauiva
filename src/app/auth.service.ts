@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Clientes } from '../app/Modelos/clientes.modelo';
 import { Router } from '@angular/router';
+import { TipoClienteService } from './tipo-cliente.service';
+import { TipoCliente } from './Modelos/tipocliente.modelo';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class AuthService {
   private apiUrl = 'http://localhost:8080/clientes';
   private currentUser: Clientes | null = null;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private tipoClienteService: TipoClienteService) { }
 
   login(correo: string): Observable<Clientes> {
     return this.http.post<Clientes>(`${this.apiUrl}/login`, { correo });
@@ -56,6 +58,10 @@ export class AuthService {
       this.currentUser = storedUser ? JSON.parse(storedUser) as Clientes : null;
     }
     return this.currentUser;
+  }
+
+  getTipoClientes(): Observable<TipoCliente[]> {
+    return this.tipoClienteService.listarTiposClientes();
   }
 
   logout() {

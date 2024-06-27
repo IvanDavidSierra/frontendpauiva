@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Clientes } from '../Modelos/clientes.modelo';
 import { Router } from '@angular/router';
+import { TipoClienteService } from '../tipo-cliente.service';
+import { TipoCliente } from '../Modelos/tipocliente.modelo';
+
 
 
 @Component({
@@ -11,13 +14,17 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   currentUser: Clientes | null = null;
-  tipoCliente: string = '';
-
-  constructor(private authService: AuthService, private router:Router) { }
-
-  ngOnInit(): void {
+  tipoClientes: any[] = [];
+  tipoClienteDescripcion: string = '';
+  
+  constructor(private authService: AuthService, private router: Router) { 
     this.currentUser = this.authService.getCurrentUser();
   }
+
+  ngOnInit(): void {
+    console.log('Current User:', this.currentUser);
+  }
+
 
   navigateToAuthUsers() {
     this.router.navigate(['/authusers']);
@@ -27,11 +34,17 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/inmueblesventas']);
   }
 
-  entrarAInmueblesArriendo(){
+  entrarAInmueblesArriendo() {
     this.router.navigate(["/inmueblesarriendo"]);
+  }
+
+  navigateToProfile() {
+    this.router.navigate(['/profile']);
   }
 
   logout() {
     this.authService.logout();
+    this.currentUser = null;
+    this.router.navigate(['/home']);
   }
 }

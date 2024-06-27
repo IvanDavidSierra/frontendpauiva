@@ -113,21 +113,21 @@
             <form class="row g-2" #registroForm="ngForm" (ngSubmit)="register()">
               <div class="col-md-6">
                 <label for="inputNombrePersona" class="form-label fw-bold">Nombre</label>
-                <input type="text" class="form-control" id="inputNombrePersona" placeholder="Digita tu nombre..." [(ngModel)]="cliente.nombre" name="nombre" required>
+                <input type="text" class="form-control" id="inputNombrePersona" placeholder="Digita tu nombre..." [(ngModel)]="clienteNatural.nombre" name="nombreNatural" required>
               </div>
               <div class="col-md-6">
                 <label for="inputApellidoPersona" class="form-label fw-bold">Apellido</label>
-                <input type="text" class="form-control" id="inputApellidoPersona" placeholder="Digita tu apellido..." [(ngModel)]="cliente.apellido" name="apellido" required>
+                <input type="text" class="form-control" id="inputApellidoPersona" placeholder="Digita tu apellido..." [(ngModel)]="clienteNatural.apellido" name="apellidoNatural" required>
               </div>
               <div class="col-md-12">
                 <label for="inputEmailPersona" class="form-label fw-bold">Correo electrónico</label>
                 <input type="email" class="form-control" id="inputEmailPersona"
-                  placeholder="Digita tu correo electrónico..." [(ngModel)]="cliente.correo" name="correo" required>
+                  placeholder="Digita tu correo electrónico..." [(ngModel)]="clienteNatural.correo" name="correoNatural" required>
               </div>
               <div class="col-md-12">
                 <label for="inputTelefonoPersona" class="form-label fw-bold">Teléfono</label>
                 <input type="number" class="form-control" id="inputTelefonoPersona"
-                  placeholder="Digita tu numero telefonico..." [(ngModel)]="cliente.telefono" name="telefono" required>
+                  placeholder="Digita tu numero telefonico..." [(ngModel)]="clienteNatural.telefono" name="telefoNaturalno" required>
               </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary" [disabled]="!registroForm.form.valid">Registrarse</button>
@@ -144,21 +144,21 @@
               <div class="col-md-6">
                 <label for="inputRazonSocialPymes" class="form-label fw-bold">Razón social</label>
                 <input type="text" class="form-control" id="inputRazonSocialPymes"
-                  placeholder="Digita la razón social..." [(ngModel)]="cliente.razon_social" name="razon_social">
+                  placeholder="Digita la razón social..." [(ngModel)]="clientePymes.razon_social" name="razon_socialPymes">
               </div>
               <div class="col-md-6">
                 <label for="inputNITPymes" class="form-label fw-bold">NIT</label>
-                <input type="text" class="form-control" id="inputNITPymes" placeholder="Digita el NIT..." [(ngModel)]="cliente.nit" name="nit">
+                <input type="text" class="form-control" id="inputNITPymes" placeholder="Digita el NIT..." [(ngModel)]="clientePymes.nit" name="nitPymes">
               </div>
               <div class="col-md-12">
                 <label for="inputEmailPymes" class="form-label fw-bold">Correo electrónico</label>
                 <input type="email" class="form-control" id="inputEmailPymes"
-                  placeholder="Digita tu correo electrónico..." [(ngModel)]="cliente.correo" name="correo">
+                  placeholder="Digita tu correo electrónico..." [(ngModel)]="clientePymes.correo" name="correoPymes">
               </div>
               <div class="col-md-12">
                 <label for="inputTelefonoPersona" class="form-label fw-bold">Teléfono</label>
                 <input type="number" class="form-control" id="inputTelefonoPersona"
-                  placeholder="Digita tu numero telefonico..." [(ngModel)]="cliente.telefono" name="telefono" required>
+                  placeholder="Digita tu numero telefonico..." [(ngModel)]="clientePymes.telefono" name="telefonoPymes" required>
               </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary" [disabled]="!registroForm.form.valid">Registrarse</button>
@@ -175,21 +175,21 @@
               <div class="col-md-6">
                 <label for="inputRazonSocialEmpresarial" class="form-label fw-bold">Razón social</label>
                 <input type="text" class="form-control" id="inputRazonSocialEmpresarial"
-                  placeholder="Digita la razón social..." [(ngModel)]="cliente.razon_social" name="razon_social">
+                  placeholder="Digita la razón social..." [(ngModel)]="clienteEmpresarial.razon_social" name="razon_socialEmpresarial">
               </div>
               <div class="col-md-6">
                 <label for="inputNITEmpresarial" class="form-label fw-bold">NIT</label>
-                <input type="text" class="form-control" id="inputNITEmpresarial" placeholder="Digita el NIT..." [(ngModel)]="cliente.nit" name="nit">
+                <input type="text" class="form-control" id="inputNITEmpresarial" placeholder="Digita el NIT..." [(ngModel)]="clienteEmpresarial.nit" name="nitEmpresarial">
               </div>
               <div class="col-md-12">
                 <label for="inputEmailEmpresarial" class="form-label fw-bold">Correo electrónico</label>
                 <input type="email" class="form-control" id="inputEmailEmpresarial"
-                  placeholder="Digita tu correo electrónico..." [(ngModel)]="cliente.correo" name="correo">
+                  placeholder="Digita tu correo electrónico..." [(ngModel)]="clienteEmpresarial.correo" name="correoEmpresarial">
               </div>
               <div class="col-md-12">
                 <label for="inputTelefonoPersona" class="form-label fw-bold">Teléfono</label>
                 <input type="number" class="form-control" id="inputTelefonoPersona"
-                  placeholder="Digita tu numero telefonico..." [(ngModel)]="cliente.telefono" name="telefono" required>
+                  placeholder="Digita tu numero telefonico..." [(ngModel)]="clienteEmpresarial.telefono" name="telefonoEmpresarial" required>
               </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary" [disabled]="!registroForm.form.valid">Registrarse</button>

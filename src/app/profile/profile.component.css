@@ -10,6 +10,15 @@
     background-color: #050A30 !important;
 }
 
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+  
+.navbar-nav .nav-item a,
+.navbar-nav .nav-item button {
+    margin-top: 5px;
+}
+
 .inmobiliaria-nav .container-fluid a{
     font-size: 16pt;
 }

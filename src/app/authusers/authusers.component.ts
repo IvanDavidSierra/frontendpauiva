@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Clientes } from '../Modelos/clientes.modelo';
 import { FormGroup, FormBuilder} from '@angular/forms';
+import { TipoCliente } from '../Modelos/tipocliente.modelo';
 
 interface LoginCliente {
   correo: string;
@@ -16,13 +17,33 @@ interface LoginCliente {
 export class AuthusersComponent{
   loginCliente: LoginCliente = { correo: ''};
   
-  cliente: Clientes = {
+  clienteNatural: Clientes = {
     razon_social: '',
     nit: '',
     nombre: '',
     apellido: '',
     telefono: '',
-    tipo_cliente: '',
+    tipoCliente: new TipoCliente(1, 'Persona Natural'),
+    correo: '',
+  };
+
+  clientePymes: Clientes = {
+    razon_social: '',
+    nit: '',
+    nombre: '',
+    apellido: '',
+    telefono: '',
+    tipoCliente: new TipoCliente(2, 'Pymes'),
+    correo: '',
+  };
+
+  clienteEmpresarial: Clientes = {
+    razon_social: '',
+    nit: '',
+    nombre: '',
+    apellido: '',
+    telefono: '',
+    tipoCliente: new TipoCliente(3, 'Empresariales'),
     correo: '',
   };
 
@@ -30,6 +51,8 @@ export class AuthusersComponent{
   errorRegistro: string = '';
   loginForm!: FormGroup;
   selectedForm: string = 'personaNatural';
+
+  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -75,11 +98,11 @@ export class AuthusersComponent{
 
 
   register() {
-    if (!this.cliente.nombre || !this.cliente.apellido || !this.cliente.correo || !this.cliente.telefono) {
+    if (!this.clienteNatural.nombre || !this.clienteNatural.apellido || !this.clienteNatural.correo || !this.clienteNatural.telefono ) {
       alert('Por favor, complete todos los campos.');
       return;
     }
-    this.authService.registrarCliente(this.cliente)
+    this.authService.registrarCliente(this.clienteNatural)
       .subscribe(
         response => {
           console.log('Cliente registrado:', response);
@@ -99,7 +122,7 @@ export class AuthusersComponent{
   }
 
   registerPymes() {
-    this.authService.registrarClientePymes(this.cliente)
+    this.authService.registrarClientePymes(this.clientePymes)
       .subscribe(
         response => {
           console.log('Cliente registrado:', response);
@@ -113,7 +136,7 @@ export class AuthusersComponent{
 
   registerEmpresariales() {
 
-    this.authService.registrarClienteEmpresariales(this.cliente)
+    this.authService.registrarClienteEmpresariales(this.clienteEmpresarial)
       .subscribe(
         response => {
           console.log('Cliente registrado:', response);
@@ -124,6 +147,7 @@ export class AuthusersComponent{
         }
       );
   }
+
 }
 
 

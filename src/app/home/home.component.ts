@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { Clientes } from '../Modelos/clientes.modelo';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,10 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private router: Router) { }
+  currentUser: Clientes | null = null;
+  constructor(private router: Router, private authService: AuthService) {
+    this.currentUser = this.authService.getCurrentUser();
+   }
   entrarAInmueblesArriendo(){
     this.router.navigate(["/inmueblesarriendo"]);}
 
@@ -16,5 +21,14 @@ export class HomeComponent {
   }
   irAInmueblesVentas(){
     this.router.navigate(['/inmueblesventas']);
+  }
+  navigateToProfile() {
+    this.router.navigate(['/profile']);
+  }
+
+  logout() {
+    this.authService.logout();
+    this.currentUser = null;
+    this.router.navigate(['/home']);
   }
 }
