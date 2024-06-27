@@ -6,6 +6,7 @@ import { Clientes } from '../app/Modelos/clientes.modelo';
 import { Router } from '@angular/router';
 import { TipoClienteService } from './tipo-cliente.service';
 import { TipoCliente } from './Modelos/tipocliente.modelo';
+import { TipoEmpleado } from './Modelos/tipoempleado.modelo';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class AuthService {
   login(correo: string): Observable<Clientes> {
     return this.http.post<Clientes>(`${this.apiUrl}/login`, { correo });
   }
-
+  
   registrarCliente(cliente: Clientes): Observable<Clientes> {
     return this.http.post<Clientes>(`${this.apiUrl}/register`, cliente).pipe(
       tap(user => this.setCurrentUser(user)),
