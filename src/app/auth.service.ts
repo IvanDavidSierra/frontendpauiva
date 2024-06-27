@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Clientes } from './Modelos/clientes.modelo';
+import { Clientes } from '../app/Modelos/clientes.modelo';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -14,13 +14,8 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(credentials: { correo: string, password: string }): Observable<Clientes> {
-    return this.http.post<Clientes>(`${this.apiUrl}/login`, credentials).pipe(
-      tap((user: Clientes) => {
-        this.setCurrentUser(user);
-      }),
-      catchError(this.handleError<Clientes>('loginCliente'))
-    );
+  login(correo: string): Observable<Clientes> {
+    return this.http.post<Clientes>(`${this.apiUrl}/login`, { correo });
   }
 
   registrarCliente(cliente: Clientes): Observable<Clientes> {

@@ -57,20 +57,17 @@
       <div class="card-body">
         <h1 class="fw-bold" style="color: white;">Iniciar Sesión</h1>
         <h5 style="color: white; border-bottom: 2px solid white; padding-bottom: 10px;">Revisa tus inmuebles publicados, los inmuebles que te interesan y mas...</h5>
-        <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <form #loginForm="ngForm" (ngSubmit)="login()">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label fw-bold">Correo Electrónico</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                   placeholder="Ingresa tu correo electrónico..." formControlName="correo" name="correo" required>
+                   placeholder="Ingresa tu correo electrónico..." [(ngModel)]="loginCliente.correo" name="correoLogin" required>
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label fw-bold">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1"
-                   placeholder="Ingresa tu contraseña..." formControlName="password" name="contraseña" required>
+          <div *ngIf="loginForm.submitted && loginForm.controls['correoLogin'].invalid" class="text-danger">
+            El correo es requerido.
           </div>
-          <button type="submit" class="btn btn-primary">Entrar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Entrar</button>
         </form>
-        <a href="#" class="fw-bold">¿Olvidaste tu contraseña?</a>
       </div>
     </div>
   </div>
@@ -113,7 +110,7 @@
         <div *ngIf="selectedForm === 'personaNatural'" class="form-section mt-4">
           <div *ngIf="errorRegistro" class="alert alert-danger">{{ errorRegistro }}</div>
           <div class="container mt-5">
-            <form class="row g-2" (ngSubmit)="register()">
+            <form class="row g-2" #registroForm="ngForm" (ngSubmit)="register()">
               <div class="col-md-6">
                 <label for="inputNombrePersona" class="form-label fw-bold">Nombre</label>
                 <input type="text" class="form-control" id="inputNombrePersona" placeholder="Digita tu nombre..." [(ngModel)]="cliente.nombre" name="nombre" required>
@@ -132,18 +129,8 @@
                 <input type="number" class="form-control" id="inputTelefonoPersona"
                   placeholder="Digita tu numero telefonico..." [(ngModel)]="cliente.telefono" name="telefono" required>
               </div>
-              <div class="col-md-6">
-                <label for="inputPasswordPersona" class="form-label fw-bold">Contraseña</label>
-                <input type="password" class="form-control" id="inputPasswordPersona"
-                  placeholder="Digita tu contraseña..." [(ngModel)]="cliente.password" name="password">
-              </div>
-              <div class="col-md-6">
-                <label for="inputConfirmPasswordPersona" class="form-label fw-bold">Confirmar contraseña</label>
-                <input type="password" class="form-control" id="inputConfirmPasswordPersona"
-                  placeholder="Confirma tu contraseña..." [(ngModel)]="confirmPassword" name="confirmPassword" required>
-              </div>
               <div class="col-12">
-                <button type="submit" class="btn btn-primary">Registrarse</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!registroForm.form.valid">Registrarse</button>
               </div>
             </form>
           </div>
@@ -153,7 +140,7 @@
         <div *ngIf="selectedForm === 'pymes'" class="form-section mt-4" >
           <div *ngIf="errorRegistro" class="alert alert-danger">{{ errorRegistro }}</div>
           <div class="container mt-5">
-            <form class="row g-2" (ngSubmit)="registerPymes()">
+            <form class="row g-2" #registroForm="ngForm" (ngSubmit)="registerPymes()">
               <div class="col-md-6">
                 <label for="inputRazonSocialPymes" class="form-label fw-bold">Razón social</label>
                 <input type="text" class="form-control" id="inputRazonSocialPymes"
@@ -173,18 +160,8 @@
                 <input type="number" class="form-control" id="inputTelefonoPersona"
                   placeholder="Digita tu numero telefonico..." [(ngModel)]="cliente.telefono" name="telefono" required>
               </div>
-              <div class="col-md-6">
-                <label for="inputPasswordPymes" class="form-label fw-bold">Contraseña</label>
-                <input type="password" class="form-control" id="inputPasswordPymes"
-                  placeholder="Digita tu contraseña..." [(ngModel)]="cliente.password" name="password">
-              </div>
-              <div class="col-md-6">
-                <label for="inputConfirmPasswordPymes" class="form-label fw-bold">Confirmar contraseña</label>
-                <input type="password" class="form-control" id="inputConfirmPasswordPymes"
-                  placeholder="Confirma tu contraseña..." [(ngModel)]="confirmPassword" name="confirmPassword">
-              </div>
               <div class="col-12">
-                <button type="submit" class="btn btn-primary">Registrarse</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!registroForm.form.valid">Registrarse</button>
               </div>
             </form>
           </div>
@@ -194,7 +171,7 @@
         <div *ngIf="selectedForm === 'empresarial'" class="form-section mt-4">
           <div *ngIf="errorRegistro" class="alert alert-danger">{{ errorRegistro }}</div>
           <div class="container mt-5">
-            <form class="row g-2" (ngSubmit)="registerEmpresariales()">
+            <form class="row g-2" #registroForm="ngForm" (ngSubmit)="registerEmpresariales()">
               <div class="col-md-6">
                 <label for="inputRazonSocialEmpresarial" class="form-label fw-bold">Razón social</label>
                 <input type="text" class="form-control" id="inputRazonSocialEmpresarial"
@@ -214,18 +191,8 @@
                 <input type="number" class="form-control" id="inputTelefonoPersona"
                   placeholder="Digita tu numero telefonico..." [(ngModel)]="cliente.telefono" name="telefono" required>
               </div>
-              <div class="col-md-6">
-                <label for="inputPasswordEmpresarial" class="form-label fw-bold">Contraseña</label>
-                <input type="password" class="form-control" id="inputPasswordEmpresarial"
-                  placeholder="Digita tu contraseña..." [(ngModel)]="cliente.password" name="password">
-              </div>
-              <div class="col-md-6">
-                <label for="inputConfirmPasswordEmpresarial" class="form-label fw-bold">Confirmar contraseña</label>
-                <input type="password" class="form-control" id="inputConfirmPasswordEmpresarial"
-                  placeholder="Confirma tu contraseña..." [(ngModel)]="confirmPassword" name="confirmPassword">
-              </div>
               <div class="col-12">
-                <button type="submit" class="btn btn-primary">Registrarse</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!registroForm.form.valid">Registrarse</button>
               </div>
             </form>
           </div>

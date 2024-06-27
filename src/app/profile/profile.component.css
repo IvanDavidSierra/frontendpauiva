@@ -1,0 +1,102 @@
+/*Copiar desde aqui*/
+*{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.inmobiliaria-nav{
+    font-size: 16pt;
+    background-color: #050A30 !important;
+}
+
+.inmobiliaria-nav .container-fluid a{
+    font-size: 16pt;
+}
+
+main{
+    background-color: #050A30;
+    height: 1080px;
+}
+
+.main img{
+    position:relative;
+    height: 700px;
+    right: 240px;
+    bottom: 80px;
+}
+
+.little-banner{
+    position: absolute;
+    padding-top: 20px;
+    padding-left: 35%;
+    background: linear-gradient(to right, #004AAD,#CB6CE6);
+    color: white;
+    height: 200px;
+    margin-left: 0;
+    width: 100%;
+}
+
+.little-banner .text{
+    border-left: 4px solid white;
+    height: 1020px;
+    padding-left: 70px;
+}
+
+.main .profile-content a{
+    position: absolute;
+    right: 56%;
+    top: 300px;
+    font-size: 40pt;
+}
+
+.little-banner h4{
+    color: #5CB6F9;
+}
+.little-banner h1{
+    font-size: 50pt;
+}
+
+.inmuebles-usuarios{
+    position: relative;
+    color: white; 
+    font-size: 40pt; 
+    padding-left: 37%;
+    bottom:600px;
+}
+.contact-icons{
+    position: absolute;
+    left: 500px;
+    top: 650px;
+}
+
+
+
+footer{
+    background: linear-gradient(to right, #004AAD,#CB6CE6);
+    color: white;
+    height: 100px;
+}
+footer img{
+    position: relative;
+    left: 40px;
+    bottom: 5px;
+}
+
+footer .linea{
+    background-color: #CAE8FF;
+    height: 100px;
+    width: 4px;
+}
+
+footer .titulo{
+    margin-top: 30px;
+    margin-right: 40px;
+    color: #CAE8FF;
+}
+
+footer .ingenieros{
+    margin-top: 30px;
+    margin-left: 40px;
+    color:#CAE8FF;
+}

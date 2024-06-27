@@ -2,15 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Clientes } from '../Modelos/clientes.modelo';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Md5 } from 'ts-md5';
+import { FormGroup, FormBuilder} from '@angular/forms';
+
+interface LoginCliente {
+  correo: string;
+}
 
 @Component({
   selector: 'app-authusers',
   templateUrl: './authusers.component.html',
   styleUrls: ['./authusers.component.css']
 })
-export class AuthusersComponent implements OnInit {
+export class AuthusersComponent{
+  loginCliente: LoginCliente = { correo: ''};
+  
   cliente: Clientes = {
     razon_social: '',
     nit: '',
@@ -19,9 +24,9 @@ export class AuthusersComponent implements OnInit {
     telefono: '',
     tipo_cliente: '',
     correo: '',
-    password: ''
   };
-  confirmPassword: string = '';
+
+
   errorRegistro: string = '';
   loginForm!: FormGroup;
   selectedForm: string = 'personaNatural';
@@ -31,6 +36,9 @@ export class AuthusersComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) { }
+
+
+
 
   toggleForm(selectedForm: string) {
     this.selectedForm = selectedForm;
@@ -48,43 +56,29 @@ export class AuthusersComponent implements OnInit {
     this.router.navigate(["/inmueblesarriendo"]);
   }
 
-  ngOnInit(): void {
-      this.loginForm = this.formBuilder.group({
-        correo: ['', [Validators.required, Validators.email]],
-        password: ['', Validators.required]
-      });
-  }
-  
-    login() {
-      if (this.loginForm.valid) {
-        const correoControl = this.loginForm.get('correo');
-        const contraseñaControl = this.loginForm.get('password');
-        if (correoControl && contraseñaControl) {
-          const credentials = {
-            correo: correoControl.value,
-            password: contraseñaControl.value
-          };
-          this.authService.login(credentials).subscribe(
-            response => {
-              this.router.navigate(['/profile']);
-            },
-            error => {
-              console.error(error);
-              // Manejar el error en el inicio de sesión
-            }
-          );
-        } else {
-          console.error('Correo control not found in loginForm');
-        }
-      }
-    }
-
-  register() {
-    if (this.cliente.password.trim().toLowerCase() !== this.confirmPassword.trim().toLowerCase()) {
-      this.errorRegistro = 'Las contraseñas no coinciden';
+  login() {
+    if (!this.loginCliente.correo) {
+      alert('Por favor, complete todos los campos.');
       return;
     }
 
+    this.authService.login(this.loginCliente.correo).subscribe(
+      (response: Clientes) => {
+        this.authService.setCurrentUser(response);
+        this.router.navigate(['/profile']);
+      },
+      error => {
+        alert('Login failed');
+      }
+    );
+  }
+
+
+  register() {
+    if (!this.cliente.nombre || !this.cliente.apellido || !this.cliente.correo || !this.cliente.telefono) {
+      alert('Por favor, complete todos los campos.');
+      return;
+    }
     this.authService.registrarCliente(this.cliente)
       .subscribe(
         response => {
@@ -105,11 +99,6 @@ export class AuthusersComponent implements OnInit {
   }
 
   registerPymes() {
-    if (this.cliente.password.trim().toLowerCase() !== this.confirmPassword.trim().toLowerCase()) {
-      console.error('Las contraseñas no coinciden');
-      return;
-    }
-
     this.authService.registrarClientePymes(this.cliente)
       .subscribe(
         response => {
@@ -123,10 +112,6 @@ export class AuthusersComponent implements OnInit {
   }
 
   registerEmpresariales() {
-    if (this.cliente.password.trim().toLowerCase() !== this.confirmPassword.trim().toLowerCase()) {
-      console.error('Las contraseñas no coinciden');
-      return;
-    }
 
     this.authService.registrarClienteEmpresariales(this.cliente)
       .subscribe(

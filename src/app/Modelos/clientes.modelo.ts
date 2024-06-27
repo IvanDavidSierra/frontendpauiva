@@ -5,8 +5,7 @@ export class Clientes {
       public tipo_cliente: string,
       public telefono: string,
       public correo: string,
-      public password: string,
       public razon_social: string,
-      public nit: string,
+      public nit: string
     ) {}
 }
