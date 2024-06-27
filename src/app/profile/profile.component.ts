@@ -4,6 +4,8 @@ import { Clientes } from '../Modelos/clientes.modelo';
 import { Router } from '@angular/router';
 import { TipoClienteService } from '../tipo-cliente.service';
 import { TipoCliente } from '../Modelos/tipocliente.modelo';
+import { Empleados } from '../Modelos/empleados.modelo';
+import { AuthempleadoService } from '../authempleado.service';
 
 
 
@@ -14,15 +16,18 @@ import { TipoCliente } from '../Modelos/tipocliente.modelo';
 })
 export class ProfileComponent implements OnInit {
   currentUser: Clientes | null = null;
+  currentUserEmpleado: Empleados | null = null;
   tipoClientes: any[] = [];
   tipoClienteDescripcion: string = '';
   
-  constructor(private authService: AuthService, private router: Router) { 
+  constructor(private authService: AuthService, private router: Router, private authEmpleadoService: AuthempleadoService) { 
     this.currentUser = this.authService.getCurrentUser();
+    this.currentUserEmpleado = this.authEmpleadoService.getCurrentUser();
   }
 
   ngOnInit(): void {
     console.log('Current User:', this.currentUser);
+    console.log('Current empleado:', this.currentUserEmpleado);
   }
 
 

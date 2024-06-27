@@ -51,13 +51,13 @@
 </div>
 
 <div class="form-auth row">
-  <!-- Formulario de Inicio de Sesión -->
+  <!-- Formulario de Inicio de Sesión para clientes-->
   <div class="col-sm-6 mb-3 mb-sm-0">
     <div class="card" style="width: 40rem; height: 40rem;">
       <div class="card-body">
         <h1 class="fw-bold" style="color: white;">Iniciar Sesión</h1>
         <h5 style="color: white; border-bottom: 2px solid white; padding-bottom: 10px;">Revisa tus inmuebles publicados, los inmuebles que te interesan y mas...</h5>
-        <form #loginForm="ngForm" (ngSubmit)="login()">
+        <form #loginForm="ngForm">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label fw-bold">Correo Electrónico</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -66,11 +66,17 @@
           <div *ngIf="loginForm.submitted && loginForm.controls['correoLogin'].invalid" class="text-danger">
             El correo es requerido.
           </div>
-          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Entrar</button>
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" (click)="login()" [disabled]="!loginForm.form.valid">Entrar como Cliente</button>
+            <button style="position: relative; right: 250px; top:328px;" type="button" class="btn btn-secondary" (click)="IniciarSesionEmpleado()" [disabled]="!loginForm.form.valid">Entrar como Empleado</button>
+        </div>
         </form>
       </div>
     </div>
   </div>
+
+
+  
   <!-- Formulario de Registro -->
   <div class="col-sm-6">
     <div class="card" style="width: 40rem; height: 40rem;">
@@ -197,7 +203,6 @@
             </form>
           </div>
         </div>
-
       </div>
     </div>
   </div>

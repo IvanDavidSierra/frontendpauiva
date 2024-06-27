@@ -4,10 +4,13 @@ import { AuthService } from '../auth.service';
 import { Clientes } from '../Modelos/clientes.modelo';
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { TipoCliente } from '../Modelos/tipocliente.modelo';
+import { AuthempleadoService } from '../authempleado.service';
+import { Empleados } from '../Modelos/empleados.modelo';
 
 interface LoginCliente {
   correo: string;
 }
+
 
 @Component({
   selector: 'app-authusers',
@@ -55,9 +58,9 @@ export class AuthusersComponent{
   
 
   constructor(
-    private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private authEmpleadoService: AuthempleadoService
   ) { }
 
 
@@ -96,6 +99,23 @@ export class AuthusersComponent{
     );
   }
 
+  
+  IniciarSesionEmpleado(){
+    if (!this.loginCliente.correo) {
+      alert('Por favor, complete todos los campos.');
+      return;
+    }
+
+    this.authEmpleadoService.loginEmpleados(this.loginCliente.correo).subscribe(
+      (response: Empleados) => {
+        this.authEmpleadoService.setCurrentUser(response);
+        this.router.navigate(['/profile']);
+      },
+      error => {
+        alert('Login failed');
+      }
+    );
+  }
 
   register() {
     if (!this.clienteNatural.nombre || !this.clienteNatural.apellido || !this.clienteNatural.correo || !this.clienteNatural.telefono ) {
