@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { InmueblesarriendoComponent } from './inmueblesarriendo/inmueblesarriendo.component';
+import { InmuebleComponent } from './inmueble/inmueble.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { InmueblesarriendoComponent } from './inmueblesarriendo/inmueblesarriend
     InmueblesventasComponent,
     ProfileComponent,
     InmueblesarriendoComponent,
+    InmuebleComponent,
   ],
   imports: [
     BrowserModule,

@@ -118,49 +118,19 @@
   
     <div class="inmuebles">
       <div class="d-flex justify-content-center">
-        <div class="card" style="width: 18rem; margin-right: 30px;">
-          <img src="inmueble-destacada1.jpg" class="card-img-top" alt="inmueble-destacado1.jpg">
+        <div class="card" style="width: 18rem; margin-right: 30px;" *ngFor="let inmueble of inmuebles">
+          <img [src]="inmueble.foto" class="card-img-top" alt="inmueble-destacado1.jpg">
           <div class="card-body">
-            <h5 class="card-title"><b>Casa ubicada en Usme</b></h5>
+            <h5 class="card-title"><b>{{ inmueble.tituloinmueble }}</b></h5>
             <div class="card-text">
-              en Arriendo
+              en {{ inmueble.estado }}
               <br>
               <h2><b>$500.000</b></h2>
             </div>
             <br>
             <br>
             <div class="d-flex justify-content-end">
-              <a href="#" class="btn btn-primary justify-content-end">Ver...</a>
-            </div>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-right: 30px;">
-          <img src="inmueble-destacada2.jpg" class="card-img-top" alt="inmueble-destacado2">
-          <div class="card-body">
-            <h5 class="card-title"><b>Apartamento ubicado en Ciudad Bolivar</b></h5>
-            <div class="card-text">
-              en Venta
-              <br>
-              <h2><b>$200.000</b></h2>
-            </div>
-            <br>
-            <div class="button-ver d-flex justify-content-end">
-              <a href="#" class="btn btn-primary justify-content-end">Ver...</a>
-            </div>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-right: 30px;">
-          <img src="inmueble-destacada3.jpg" class="card-img-top" alt="inmueble-destacado3">
-          <div class="card-body">
-            <h5 class="card-title"><b>Apartamento ubicado en Engativa</b></h5>
-            <div class="card-text">
-              en Arriendo
-              <br>
-              <h2><b>$700.000</b></h2>
-            </div>
-            <br>
-            <div class="d-flex justify-content-end">
-              <a href="#" class="btn btn-primary justify-content-end">Ver...</a>
+              <a [routerLink]="['/inmueble', inmueble.idinmueble]" style="position: relative; bottom: 20px;" class="btn btn-primary justify-content-end">Ver...</a>
             </div>
           </div>
         </div>
