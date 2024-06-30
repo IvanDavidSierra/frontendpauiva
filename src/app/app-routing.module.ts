@@ -5,7 +5,6 @@ import { HomeComponent } from './home/home.component';
 import { InmueblesventasComponent } from './inmueblesventas/inmueblesventas.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InmueblesarriendoComponent } from './inmueblesarriendo/inmueblesarriendo.component';
-import { InmuebleComponent } from './inmueble/inmueble.component';
 
 
 const routes: Routes = [
@@ -14,6 +13,7 @@ const routes: Routes = [
   { path: 'inmueblesventas', component: InmueblesventasComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'inmueblesarriendo', component: InmueblesarriendoComponent},
+  { path: 'agregarinmueble' , component: AgregarinmuebleComponent},
   { path: 'inmueble/:id', component: InmuebleComponent},
   { path: '**', redirectTo: '' } 
 ];

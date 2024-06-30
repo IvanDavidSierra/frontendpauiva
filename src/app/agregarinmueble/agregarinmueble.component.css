@@ -1,0 +1,125 @@
+*{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.inmobiliaria-nav{
+    font-size: 16pt;
+    background-color: #050A30 !important;
+}
+
+.inmobiliaria-nav .container-fluid a{
+    font-size: 16pt;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+  
+.navbar-nav .nav-item a,
+.navbar-nav .nav-item button {
+    margin-top: 5px;
+}
+
+body {
+    background-color: #050A30;
+    font-family: sans-serif;
+    color: white;
+    height: 1020px;
+}
+
+.header {
+    background: linear-gradient(to right, #004AAD,#CB6CE6);
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 30px;
+    
+  }
+
+  .header h1 {
+    font-size: 40px;
+    margin: 0;
+    color:white
+    
+  }
+
+
+.container {
+    background-color: #050A30;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 80px;
+    padding: 100px;
+   
+
+}
+
+.card {
+    background: linear-gradient(to right, #004AAD, #CB6CE6);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.973);
+    overflow: hidden;
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(255, 253, 253);
+}
+
+.icon {
+    width: 100px;
+    height: 50px;
+    margin-bottom: 80px;
+}
+
+.button {
+    color: black;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+}
+
+
+.icon img {
+    width: 100px;
+    height: 100px;
+}
+
+
+footer{
+    background: linear-gradient(to right, #004AAD,#CB6CE6);
+    color: white;
+    height: 100px;
+}
+footer img{
+    position: relative;
+    left: 40px;
+    bottom: 5px;
+}
+
+footer .linea{
+    background-color: #CAE8FF;
+    height: 100px;
+    width: 4px;
+}
+
+footer .titulo{
+    margin-top: 30px;
+    margin-right: 40px;
+    color: #CAE8FF;
+}
+
+footer .ingenieros{
+    margin-top: 30px;
+    margin-left: 40px;
+    color:#CAE8FF;
+}
