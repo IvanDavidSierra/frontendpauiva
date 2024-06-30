@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Clientes } from '../Modelos/clientes.modelo';
 import { Router } from '@angular/router';
-import { TipoClienteService } from '../tipo-cliente.service';
-import { TipoCliente } from '../Modelos/tipocliente.modelo';
 import { Empleados } from '../Modelos/empleados.modelo';
 import { AuthempleadoService } from '../authempleado.service';
 

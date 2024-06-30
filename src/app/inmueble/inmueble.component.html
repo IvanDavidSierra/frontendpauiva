@@ -54,8 +54,10 @@
         <h2 class="titulo-inmueble fw-bold">{{ inmueble.tituloinmueble }}</h2>
         <p class="estado-inmueble fw-bold">{{ inmueble.estado }}</p>
         <p class="tipo-inmueble fw-bold">{{ inmueble.tipoinmueble.descripcioninmueble }}</p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#5CB6F9" class="bi bi-house-door-fill house-icon" viewBox="0 0 16 16">
-            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#5CB6F9"
+            class="bi bi-house-door-fill house-icon" viewBox="0 0 16 16">
+            <path
+                d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
         </svg>
         <img src="bed-icon.svg" alt="cama" class="bed-icon" width="80" height="80">
         <p class="fw-bold habitaciones-titulo">Habitaciones</p>
@@ -64,18 +66,41 @@
         <img src="bath-icon.svg" alt="baño" class="bath-icon" width="80" height="80">
         <p class="fw-bold baño-titulo">Baños</p>
         <p class="baños-count">{{ inmueble.banos }}</p>
+        <!--<p>Descripción: {{ inmueble.descripcion }}</p>-->
 
-        
+        <img src="garage-icon.svg" alt="garage" class="garage-icon" width="80" height="80">
+        <p class="fw-bold garaje-titulo">Garajes</p>
+        <p class="garaje-count">{{ inmueble.garajes }}</p>
 
+        <img src="house-icon-estrato.svg" alt="estrato" class="estrato-icon" width="80" height="80">
+        <p class="fw-bold estrato-titulo">Estrato</p>
+        <p class="estrato-count">{{ inmueble.estrato }}</p>
 
+        <img src="area-icon.svg" alt="area" class="area-icon" width="80" height="80">
+        <p class="fw-bold area-titulo">Área</p>
+        <p class="area-count">{{ inmueble.area }}</p>
 
-        <p>Descripción: {{ inmueble.descripcion }}</p>
+    </div>
 
-        <p>Garajes: {{ inmueble.garajes }}</p>
-        <p>Estrato: {{ inmueble.estrato }}</p>
-        <p>Área: {{ inmueble.area }}</p>
-        <p>Propietario: {{ inmueble.propietario.nombre }}</p>
-        <p>Comercial: {{ inmueble.comercial.nombre }}</p>
+    <div class="contact-comercial" *ngIf="inmueble">
+        <div class="contact-details">
+            <div class="left-column">
+                <h1 class="fw-bold">¿Te interesa? Haz tu cita con el asesor</h1>
+                <img src="profile-icon.png" alt="profile" width="480" height="240">
+                <div class="comercial-info">
+                    <p class="comercial-name">{{ inmueble.comercial.nombre }} {{inmueble.comercial.apellido}}</p>
+                    <p class="comercial-telefono">Tel. 3100254587 </p>
+                    <p class="comercial-correo">{{ inmueble.comercial.correo }}</p>
+                </div>
+                <a class="btn btn-primary"
+                style="background-color: #CAE8FF; color: black; border: none; position: absolute; top: 950px; left:650px; font-size: 25pt; margin-left: 10px;">Realizar cita</a>
+            </div>
+            <div class="right-column">
+                <h1 class="title fw-bold">Descripcion del inmueble</h1>
+                <p class="inmueble-description ">{{ inmueble.descripcion }}</p>
+            </div>
+        </div>
+
     </div>
 </main>
 

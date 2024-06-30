@@ -65,22 +65,138 @@
 
 .main-content .inmueble .bed-icon{
     position: relative;
-    left: 300px;
+    left: 430px;
     bottom:15px;
 }
 
 .main-content .inmueble .habitaciones-titulo{
     position: absolute;
-    left: 1200px;
+    left: 1320px;
     bottom: 520px;
     font-size: 26pt;
 }
 
 .main-content .inmueble .habitaciones-count{
     position: absolute;
-    left: 1200px;
+    left: 1325px;
     bottom: 480px;
     font-size: 20pt;
+}
+
+.main-content .inmueble .bath-icon{
+    position: absolute;
+    right: 250px;
+    top: 390px;
+}
+
+.main-content .inmueble .baño-titulo{
+    position: absolute;
+    left: 1650px;
+    bottom: 520px;
+    font-size: 26pt;
+}
+
+.main-content .inmueble .baños-count{
+    position: absolute;
+    left: 1655px;
+    bottom: 480px;
+    font-size: 20pt;
+}
+.main-content .inmueble .garage-icon{
+    position: absolute;
+    top: 550px;
+    right: 940px;
+}
+
+.main-content .inmueble .garaje-titulo{
+    position: absolute;
+    font-size: 26pt;
+    left: 960px;
+    top: 540px;
+}
+
+.main-content .inmueble .garaje-count{
+    position: absolute;
+    font-size: 20pt;
+    left: 970px;
+    bottom: 322px;
+}
+
+.main-content .inmueble .estrato-icon{
+    position: absolute;
+    top: 540px;
+    right: 680px;
+}
+.main-content .inmueble .estrato-titulo{
+    position: absolute;
+    font-size: 26pt;
+    left: 1230px;
+    bottom: 360px;
+}
+
+.main-content .inmueble .estrato-count{
+    position: absolute;
+    font-size: 20pt;
+    left: 1232px;
+    bottom: 320px;
+}
+
+.main-content .inmueble .area-icon{
+    position: absolute;
+    right: 350px;
+    top: 550px;
+}
+
+.main-content .inmueble .area-titulo{
+    position: absolute;
+    font-size: 26pt;
+    left: 1560px;
+    bottom: 360px;
+}
+
+.main-content .inmueble .area-count{
+    position: absolute;
+    font-size: 20pt;
+    left: 1560px;
+    bottom: 320px;
+}
+
+.main-content .contact-comercial{
+    margin-top: 60px;
+    background: linear-gradient(to right, #004AAD,#CB6CE6);
+    height: 360px;
+    border-bottom: 4px solid #CAE8FF;
+}
+.main-content .contact-comercial .contact-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.main-content .contact-comercial .contact-details .left-column,
+.right-column{
+    flex: 1;
+    padding: 10px;
+}
+
+
+.main-content .contact-comercial .contact-details .left-column img{
+    position: absolute;
+    right: 1500px;
+}
+
+.main-content .contact-comercial .contact-details .right-column h1{
+    padding-right: 10px;
+}
+
+.main-content .contact-comercial .contact-details .left-column .comercial-info{
+    position: relative;
+    font-size: 25pt;
+    top: 20px;
+    left: 260px;
+}
+
+.main-content .contact-comercial h1{
+    padding-left: 20px;
 }
 
 /*Copiar desde aqui para pie de pagina*/

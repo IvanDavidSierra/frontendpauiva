@@ -5,6 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { InmueblesventasComponent } from './inmueblesventas/inmueblesventas.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InmueblesarriendoComponent } from './inmueblesarriendo/inmueblesarriendo.component';
+import { AgregarinmuebleComponent } from './agregarinmueble/agregarinmueble.component';
+import { InmuebleComponent } from './inmueble/inmueble.component';
 
 
 const routes: Routes = [
@@ -22,4 +24,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+
+export class AppRoutingModule {}

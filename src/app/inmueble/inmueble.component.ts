@@ -22,8 +22,8 @@ export class InmuebleComponent {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.inmuebleService.listarId(id).subscribe(
       inmueble => {
+        console.log('Datos del inmueble:', inmueble);
         this.inmueble = inmueble;
-        console.log(this.inmueble); // Verifica aquí los datos recibidos
       },
       error => {
         console.error('Error fetching inmueble:', error);
@@ -35,14 +35,14 @@ export class InmuebleComponent {
     this.router.navigate(['/authusers']);
   }
   entrarAInmueblesArriendo(){
-    this.router.navigate(["/inmueblesarriendo"]);}
+    this.router.navigate(["/inmueblesarriendo"]);
+  }
   irAInmueblesVentas(){
     this.router.navigate(['/inmueblesventas']);
   }
   navigateToProfile() {
     this.router.navigate(['/profile']);
   }
-
   logout() {
     this.authService.logout();
     this.currentUser = null;

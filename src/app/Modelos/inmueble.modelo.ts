@@ -19,7 +19,6 @@ export class Inmueble {
         public propietario: Clientes,
         public foto: String,
         public pago: Pagos,
-        public comercial: Empleados,
-        
+        public comercial: Empleados,  
     ) {}
 }
