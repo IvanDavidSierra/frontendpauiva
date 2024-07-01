@@ -33,14 +33,18 @@
     position: relative;
     top: 50px;
     left: 50px;
+    width: 800px;
+    height: 600px;
 
 }
 
 .main-content .inmueble .titulo-inmueble{
     position: absolute;
-    right: 220px;
+    left: 880px;
     bottom: 700px;
-    font-size: 45pt;
+    font-size: 35pt;
+    margin: 0;
+    padding: 0;
 }
 
 .main-content .inmueble .estado-inmueble{
@@ -159,6 +163,13 @@
     font-size: 20pt;
     left: 1560px;
     bottom: 320px;
+}
+
+.main-content .inmueble .valor-inmueble{
+    position: absolute;
+    font-size: 70pt;
+    left: 880px;
+    bottom: 150px;
 }
 
 .main-content .contact-comercial{

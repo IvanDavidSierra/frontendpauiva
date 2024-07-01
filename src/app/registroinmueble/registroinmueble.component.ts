@@ -1,24 +1,31 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { Clientes } from '../Modelos/clientes.modelo';
 import { InmuebleService } from '../inmueble.service';
+import { Clientes } from '../Modelos/clientes.modelo';
 import { Inmueble } from '../Modelos/inmueble.modelo';
 
 @Component({
-  selector: 'app-inmueblesarriendo',
-  templateUrl: './inmueblesarriendo.component.html',
-  styleUrl: './inmueblesarriendo.component.css'
+  selector: 'app-registroinmueble',
+  templateUrl: './registroinmueble.component.html',
+  styleUrl: './registroinmueble.component.css'
 })
-export class InmueblesarriendoComponent {
+export class RegistroinmuebleComponent implements OnInit {
+  inmueble: Inmueble | undefined;
   currentUser: Clientes | null = null;
-  inmuebles: Inmueble[] = [];
-  constructor(private router: Router, private authService: AuthService,private inmuebleService: InmuebleService) { 
+  tipoInmueble: string = '';
+
+  constructor(private router: Router, private authService: AuthService,private inmuebleService: InmuebleService, private route: ActivatedRoute) {
     this.currentUser = this.authService.getCurrentUser();
-    this.inmuebleService.listar().subscribe(data => {
-      this.inmuebles = data;
-    });
   }
+
+  ngOnInit() {
+    this.tipoInmueble = this.inmuebleService.getTipoInmueble();
+  }
+
+
+
+   
   entrarAInmueblesArriendo(){
     this.router.navigate(["/inmueblesarriendo"]);}
 

@@ -59,14 +59,20 @@
     <h1>Inmuebles en Arriendo</h1>
   </div>
 
-  <div class="container">
-    <div class="card">
-      <img src="Arriendo1.JPG" alt="Bogotá / Usme">
-      <div class="content">
-        <h3>Bogotá / Usme</h3>
-        <p>En Arriendo</p>
-        <p class="price">$600.000</p>
-        <a href="#" class="button">VER...</a>
+  <div class="inmuebles-arriendo">
+    <div class="scroll-container">
+      <div class="grid-container">
+        <ng-container *ngFor="let inmueble of inmuebles">
+          <div class="card" *ngIf="inmueble.estado === 'Arriendo'">
+            <img [src]="inmueble.foto" class="card-img-top" alt="fotos">
+            <div class="card-body">
+              <h3 class="card-title">{{ inmueble.tituloinmueble }}</h3>
+              <p>En {{ inmueble.estado }}</p>
+              <p class="price">{{ inmueble.valor }}</p>
+              <a [routerLink]="['/inmueble', inmueble.idinmueble]" class="btn btn-primary">VER...</a>
+            </div>
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>

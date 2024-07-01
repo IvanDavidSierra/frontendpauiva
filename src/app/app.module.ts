@@ -13,6 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { InmueblesarriendoComponent } from './inmueblesarriendo/inmueblesarriendo.component';
 import { AgregarinmuebleComponent } from './agregarinmueble/agregarinmueble.component';
 import { InmuebleComponent } from './inmueble/inmueble.component';
+import { RegistroinmuebleComponent } from './registroinmueble/registroinmueble.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InmuebleComponent } from './inmueble/inmueble.component';
     ProfileComponent,
     InmueblesarriendoComponent,
     InmuebleComponent,
-    AgregarinmuebleComponent  
+    AgregarinmuebleComponent,
+    RegistroinmuebleComponent  
   ],
   imports: [
     BrowserModule,

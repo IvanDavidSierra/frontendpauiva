@@ -13,14 +13,21 @@ import { InmuebleService } from '../inmueble.service';
 export class HomeComponent {
   currentUser: Clientes | null = null;
   inmuebles: Inmueble[] = [];
+  inmueblesAleatorios: Inmueble[] = [];
 
 
   constructor(private router: Router, private authService: AuthService,private inmuebleService: InmuebleService) {
     this.currentUser = this.authService.getCurrentUser();
     this.inmuebleService.listar().subscribe(data => {
       this.inmuebles = data;
+      this.inmueblesAleatorios = this.getRandomInmuebles(this.inmuebles, 3);
     });
    }
+
+  getRandomInmuebles(arr: Inmueble[], num: number): Inmueble[] {
+    const shuffled = arr.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
+  }
 
    
   entrarAInmueblesArriendo(){

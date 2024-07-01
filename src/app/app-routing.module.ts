@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { InmueblesarriendoComponent } from './inmueblesarriendo/inmueblesarriendo.component';
 import { AgregarinmuebleComponent } from './agregarinmueble/agregarinmueble.component';
 import { InmuebleComponent } from './inmueble/inmueble.component';
+import { RegistroinmuebleComponent } from './registroinmueble/registroinmueble.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'inmueblesarriendo', component: InmueblesarriendoComponent},
   { path: 'agregarinmueble' , component: AgregarinmuebleComponent},
   { path: 'inmueble/:id', component: InmuebleComponent},
+  {path: 'registrarinmueble', component: RegistroinmuebleComponent},
   { path: '**', redirectTo: '' } 
 ];
 

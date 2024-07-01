@@ -118,24 +118,23 @@
   
     <div class="inmuebles">
       <div class="d-flex justify-content-center">
-        <div class="card" style="width: 18rem; margin-right: 30px;" *ngFor="let inmueble of inmuebles">
+        <div class="card" style="width: 18rem; margin-right: 30px;" *ngFor="let inmueble of inmueblesAleatorios">
           <img [src]="inmueble.foto" class="card-img-top" alt="inmueble-destacado1.jpg">
           <div class="card-body">
             <h5 class="card-title"><b>{{ inmueble.tituloinmueble }}</b></h5>
             <div class="card-text">
               en {{ inmueble.estado }}
               <br>
-              <h2><b>$500.000</b></h2>
+              <h2><b>{{ inmueble.valor }}</b></h2>
             </div>
             <br>
             <br>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end button-container">
               <a [routerLink]="['/inmueble', inmueble.idinmueble]" style="position: relative; bottom: 20px;" class="btn btn-primary justify-content-end">Ver...</a>
             </div>
           </div>
         </div>
       </div>
-      <a href="" class="d-flex justify-content-end" style="padding-right: 300px; font-size: 20pt; color: white;">Ver todos los inmuebles...</a>
     </div>
       <!--Pie de pagina-->
     <footer class="d-flex justify-content-center">

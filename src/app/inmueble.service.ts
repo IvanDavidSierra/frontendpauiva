@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class InmuebleService {
   private apiUrl = `http://localhost:8080/inmueble/submit`;
+  private tipoInmueble: string = '';
+
   constructor(private http: HttpClient) { }
 
   listar(): Observable<Inmueble[]> {
@@ -16,5 +18,13 @@ export class InmuebleService {
   
   listarId(id: number): Observable<Inmueble> {
     return this.http.get<Inmueble>(`${this.apiUrl}/${id}`);
+  }
+
+  setTipoInmueble(tipo: string) {
+    this.tipoInmueble = tipo;
+  }
+
+  getTipoInmueble(): string {
+    return this.tipoInmueble;
   }
 }

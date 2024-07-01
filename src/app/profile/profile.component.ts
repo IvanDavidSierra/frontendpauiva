@@ -45,6 +45,10 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/profile']);
   }
 
+  ingresarASubirInmueble(){
+    this.router.navigate(['agregarinmueble']);
+  }
+
   logout() {
     this.authService.logout();
     this.currentUser = null;

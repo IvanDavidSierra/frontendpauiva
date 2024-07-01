@@ -40,12 +40,11 @@ body {
   margin: 0;
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 100px;
 }
 
 .card {
@@ -54,8 +53,9 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.973);
   overflow: hidden;
   width: 200px;
-  height: 250px;
+  height: 340px;
   text-align: center;
+  padding: 10px;
 }
 
 .card img {
@@ -64,8 +64,30 @@ body {
   object-fit: cover;
 }
 
-.card.content {
+.card-body{
   padding: 10px;
+}
+
+.card-title{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+.scroll-container {
+  max-height: 80vh;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-container {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
 
 .card h3 {

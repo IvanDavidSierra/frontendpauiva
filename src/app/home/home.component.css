@@ -110,13 +110,22 @@
 .inmuebles .card{
     position: relative;
     bottom: 60px;
-    height: 430px;
+    height: 500px;
 }
 
 .inmuebles .card{
     background:#12229D;
     color: white;
     border: black;
+}
+
+.inmuebles .button-container{
+    position: absolute;
+    bottom: 20px;
+    right: 20px; 
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .inmuebles .card .card-body a{

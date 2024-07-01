@@ -59,17 +59,25 @@
     <h1>Inmuebles en venta</h1>
   </div>
 
-  <div class="container">
-    <div class="card">
-      <img src="apartamentonorte.JPG" alt="Apartamento en el Norte">
-      <div class="content">
-        <h3>Apartamento en el Norte</h3>
-        <p>En venta</p>
-        <p class="price">$300.000.000</p>
-        <a href="#" class="button">VER...</a>
+
+  <div class="inmuebles-venta">
+    <div class="scroll-container">
+      <div class="grid-container">
+        <ng-container *ngFor="let inmueble of inmuebles">
+          <div class="card" *ngIf="inmueble.estado === 'Venta'">
+            <img [src]="inmueble.foto" class="card-img-top" alt="fotos">
+            <div class="card-body">
+              <h3 class="card-title">{{ inmueble.tituloinmueble }}</h3>
+              <p>En {{ inmueble.estado }}</p>
+              <p class="price">{{ inmueble.valor }}</p>
+              <a [routerLink]="['/inmueble', inmueble.idinmueble]" class="btn btn-primary">VER...</a>
+            </div>
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>
+
 
 
 </body>

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Clientes } from '../Modelos/clientes.modelo';
 import { AuthService } from '../auth.service';
+import { Inmueble } from '../Modelos/inmueble.modelo';
+import { InmuebleService } from '../inmueble.service';
 
 @Component({
   selector: 'app-inmueblesventas',
@@ -10,9 +12,14 @@ import { AuthService } from '../auth.service';
 })
 export class InmueblesventasComponent {
   currentUser: Clientes | null = null;
-  constructor(private router: Router, private authService: AuthService) { 
+  inmuebles: Inmueble[] = [];
+  constructor(private router: Router, private authService: AuthService,private inmuebleService: InmuebleService) { 
     this.currentUser = this.authService.getCurrentUser();
+    this.inmuebleService.listar().subscribe(data => {
+      this.inmuebles = data;
+    });
   }
+
   entrarAInmueblesArriendo(){
     this.router.navigate(["/inmueblesarriendo"]);}
 

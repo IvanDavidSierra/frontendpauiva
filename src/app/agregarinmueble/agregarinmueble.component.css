@@ -27,33 +27,29 @@ body {
     font-family: sans-serif;
     color: white;
     height: 1020px;
+    padding-top: 10px;
 }
+
 
 .header {
     background: linear-gradient(to right, #004AAD,#CB6CE6);
     text-align: center;
     padding: 30px;
-    margin-bottom: 30px;
     
-  }
+}
 
-  .header h1 {
+.header h1 {
     font-size: 40px;
     margin: 0;
-    color:white
-    
-  }
-
+    color:white  
+}
 
 .container {
-    background-color: #050A30;
+    padding-top: 200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 80px;
-    padding: 100px;
-   
-
 }
 
 .card {

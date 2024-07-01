@@ -1,3 +1,4 @@
+
 import { Clientes } from "./clientes.modelo";
 import { Empleados } from "./empleados.modelo";
 import { Pagos } from "./pagos.modelo";
@@ -19,6 +20,7 @@ export class Inmueble {
         public propietario: Clientes,
         public foto: String,
         public pago: Pagos,
-        public comercial: Empleados,  
+        public comercial: Empleados,
+        public valor: String
     ) {}
 }
