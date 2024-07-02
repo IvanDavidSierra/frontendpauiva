@@ -46,17 +46,15 @@
 </header>
 
 <main>
-    <form class="register-form">
-        <input class="titulo-inmueble fw-bold form-control" placeholder="Digita el titulo del inmueble">
-        <select class="form-select estado-inmueble">
+    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <input class="titulo-inmueble fw-bold form-control" placeholder="Digita el titulo del inmueble" formControlName="tituloinmueble">
+        <select class="form-select estado-inmueble" formControlName="estado">
             <option selected>Selecciona estado para el inmueble</option>
-            <option value="Venta">Venta</option>
+            <option value="Venta" >Venta</option>
             <option value="Arriendo">Arriendo</option>
         </select>
 
-
-        <p class="estado-inmueble fw-bold"></p>
-        <p class="tipo-inmueble fw-bold">{{ tipoInmueble }}</p>
+        <p class="tipo-inmueble fw-bold">{{ tipoInmuebleDescripcion }}</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#5CB6F9"
             class="bi bi-house-door-fill house-icon" viewBox="0 0 16 16">
             <path
@@ -64,58 +62,62 @@
         </svg>
         <img src="bed-icon.svg" alt="cama" class="bed-icon" width="80" height="80">
         <p class="fw-bold habitaciones-titulo">Habitaciones</p>
-        <input type="number" class="form-control habitaciones-count" placeholder="Digita cantidad habitaciones" name="habitaciones">
+        <input type="number" class="form-control habitaciones-count" placeholder="Digita cantidad habitaciones" name="habitaciones" formControlName="habitaciones">
 
         <img src="bath-icon.svg" alt="baño" class="bath-icon" width="80" height="80">
         <p class="fw-bold baño-titulo">Baños</p>
-        <input type="number" class="form-control baños-count" placeholder="Digita cantidad baños" name="banos">
+        <input type="number" class="form-control baños-count" placeholder="Digita cantidad baños" name="banos" formControlName="banos">
 
         <img src="garage-icon.svg" alt="garage" class="garage-icon" width="80" height="80">
         <p class="fw-bold garaje-titulo">Garajes</p>
-        <input type="number" class="form-control garaje-count" placeholder="Digita cantidad garajes" name="garaje">
+        <input type="number" class="form-control garaje-count" placeholder="Digita cantidad garajes" name="garaje" formControlName="garajes">
 
         <img src="house-icon-estrato.svg" alt="estrato" class="estrato-icon" width="80" height="80">
         <p class="fw-bold estrato-titulo">Estrato</p>
-        <input type="number" class="form-control estrato-count" placeholder="Digita estrato" name="estrato">
+        <input type="number" class="form-control estrato-count" placeholder="Digita estrato" name="estrato" formControlName="estrato">
 
         <img src="area-icon.svg" alt="area" class="area-icon" width="80" height="80">
         <p class="fw-bold area-titulo">Área</p>
-        <input type="text" class="form-control area-count" placeholder="Digita area" name="area">
+        <input type="text" class="form-control area-count" placeholder="Digita area" name="area" formControlName="area">
 
         <div class="inmueble-img">
-            <svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" fill="currentColor" class="bi bi-upload"
+                viewBox="0 0 16 16">
                 <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                 <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
-              </svg>
+            </svg>
             <p class="fw-bold">Sube una foto de tu inmueble</p>
-            <a  class="btn btn-primary fw-bold"
-            style="background-color: white; color: #12229D; border: none; position: relative; top: 5px; margin-left: 10px; font-size: 24pt;">Subir medios</a>
+            <input type="file" class="btn btn-primary fw-bold form-control-file" id="fotoInmueble" style="background-color: white; color: #12229D; border: none; font-size: 24pt;" (change)="onFileSelected($event)">
         </div>
         <div class="comerciales-descripcion">
             <div class="columns">
                 <div class="left-column">
                     <h5 class="fw-bold" style="font-size: 22pt;">Asesores disponibles: </h5>
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check visually-hidden" name="btnradio" id="btnradio1" autocomplete="off">
-                        <label class="btn btn-outline-primary me-2" for="btnradio1">
-                            <div>
-                                <img src="profile-icon.png" alt="imagen asesor" style="height: 160px;">
-                                <p class="mb-0">Nombre comercial</p>
-                                <p>Tel. 21212445</p>
-                                <p>Correo: adasdas&#64;gmail.com</p>
-                            </div>
-                        </label>
-                    </div>
+                    <ng-container *ngFor="let empleado of empleados">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check visually-hidden" name="comercial"
+                                [id]="'btnradio' + empleado.idempleado" [value]="empleado.idempleado"
+                                autocomplete="off" formControlName="comercial">
+                            <label class="btn btn-outline-primary me-2" [for]="'btnradio' + empleado.idempleado">
+                                <div>
+                                    <img src="profile-icon.png" alt="imagen asesor" style="height: 160px;">
+                                    <p class="mb-0">{{ empleado.nombre }} {{ empleado.apellido }}</p>
+                                    <p>Tel. {{ empleado.telefono }}</p>
+                                    <p>Correo: {{ empleado.correo }}</p>
+                                </div>
+                            </label>
+                        </div>
+                    </ng-container>
                 </div>
                 <div class="right-column">
                     <p class="fw-bold ">Descripción del inmueble</p>
                     <div class="mb-3">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ingresa la descripcion del inmueble"></textarea>
-                      </div>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Ingresa la descripcion del inmueble" formControlName="descripcion"></textarea>
+                    </div>
                 </div>
             </div>
-            <a  class="btn btn-primary fw-bold"
-            style="background-color: white; color: #12229D; border: none; position: relative; bottom:500px; left: 1400px; margin-left: 10px; font-size: 35pt;">Subir inmueble</a>
+            <button type="submit" class="btn btn-primary fw-bold" style="background-color: white; color: #12229D; border: none; font-size: 24pt;">Subir inmueble</button>
         </div>
     </form>
 </main>

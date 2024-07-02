@@ -21,6 +21,7 @@ export class AuthusersComponent{
   loginCliente: LoginCliente = { correo: ''};
   
   clienteNatural: Clientes = {
+    idcliente: 0,
     razon_social: '',
     nit: '',
     nombre: '',
@@ -31,6 +32,7 @@ export class AuthusersComponent{
   };
 
   clientePymes: Clientes = {
+    idcliente: 0,
     razon_social: '',
     nit: '',
     nombre: '',
@@ -41,6 +43,7 @@ export class AuthusersComponent{
   };
 
   clienteEmpresarial: Clientes = {
+    idcliente:0,
     razon_social: '',
     nit: '',
     nombre: '',

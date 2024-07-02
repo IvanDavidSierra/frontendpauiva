@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'inmueblesarriendo', component: InmueblesarriendoComponent},
   { path: 'agregarinmueble' , component: AgregarinmuebleComponent},
   { path: 'inmueble/:id', component: InmuebleComponent},
-  {path: 'registrarinmueble', component: RegistroinmuebleComponent},
+  {path: 'registrarinmueble/:id/:descripcion', component: RegistroinmuebleComponent},
   { path: '**', redirectTo: '' } 
 ];
 

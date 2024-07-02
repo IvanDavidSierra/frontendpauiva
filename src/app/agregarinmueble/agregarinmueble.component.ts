@@ -17,7 +17,7 @@ export class AgregarinmuebleComponent implements OnInit {
   tipoClientes: any[] = [];
   tipoClienteDescripcion: string = '';
   
-  constructor(private authService: AuthService, private router: Router, private authEmpleadoService: AuthempleadoService, private inmuebleService: InmuebleService) { 
+  constructor(private authService: AuthService, private router: Router, private authEmpleadoService: AuthempleadoService) { 
     this.currentUser = this.authService.getCurrentUser();
     this.currentUserEmpleado = this.authEmpleadoService.getCurrentUser();
   }
@@ -41,9 +41,8 @@ export class AgregarinmuebleComponent implements OnInit {
     this.router.navigate(['/profile']);
   }
 
-  irARegistrarInmueble(tipo: string){
-    this.inmuebleService.setTipoInmueble(tipo);
-    this.router.navigate(['registrarinmueble'])
+  irARegistrarInmueble(tipoInmuebleId: number, tipoInmuebleDescripcion: string): void {
+    this.router.navigate(['/registrarinmueble', tipoInmuebleId, tipoInmuebleDescripcion]);
   }
 
   logout() {

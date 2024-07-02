@@ -20,6 +20,10 @@ export class AuthempleadoService {
     return this.http.post<Empleados>(`${this.apiEmpleadosUrl}/login`, { correo });
   }
 
+  obtenerEmpleados(): Observable<Empleados[]> {
+    return this.http.get<Empleados[]>(`${this.apiEmpleadosUrl}/submit`);
+  }
+
   setCurrentUser(user: Empleados) {
     this.currentUserEmpleado = user;
     localStorage.setItem('currentUser', JSON.stringify(user));

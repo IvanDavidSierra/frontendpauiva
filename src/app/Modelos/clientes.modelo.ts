@@ -2,6 +2,7 @@ import { TipoCliente } from "./tipocliente.modelo";
 
 export class Clientes {
     constructor(
+      public idcliente: number,
       public nombre: string,
       public apellido: string,
       public tipoCliente: TipoCliente,
