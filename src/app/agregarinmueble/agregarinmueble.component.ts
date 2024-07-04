@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Clientes } from '../Modelos/clientes.modelo';
-import { Empleados } from '../Modelos/empleados.modelo';
+import { Clientes } from '../modelos/clientes.modelo';
+import { Empleados } from '../modelos/empleados.modelo';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { AuthempleadoService } from '../authempleado.service';
@@ -47,7 +47,9 @@ export class AgregarinmuebleComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.authEmpleadoService.logout();
     this.currentUser = null;
+    this.currentUserEmpleado = null;
     this.router.navigate(['/home']);
   }
 

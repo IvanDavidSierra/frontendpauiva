@@ -6,7 +6,7 @@ export class Empleados {
       public nombre: string,
       public apellido: string,
       public tipoEmpleado: TipoEmpleado,
-      public oficina: string,
+      public oficina: number,
       public correo: string,
       public telefono: string,
     ) {}

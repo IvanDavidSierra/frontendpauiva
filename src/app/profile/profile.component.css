@@ -76,9 +76,40 @@ main{
 .contact-icons{
     position: absolute;
     left: 500px;
-    top: 650px;
+    top: 690px;
 }
 
+.inmuebles{
+    background-color: #050A30;
+    height: 300px;
+    font-size: 10pt;
+    width: 5000px;
+}
+
+.inmuebles .card{
+    position: relative;
+    bottom: 60px;
+    height: 400px;
+}
+
+.inmuebles .card{
+    background:#12229D;
+    color: white;
+    border: black;
+}
+
+.inmuebles .button-container{
+    position: absolute;
+    bottom: 20px;
+    right: 20px; 
+    width: 100%;
+}
+
+.inmuebles .card .card-body a{
+    color: black;
+    background-color: #CAE8FF;
+    border: #CAE8FF;
+}
 
 
 footer{

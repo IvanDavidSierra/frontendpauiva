@@ -1,0 +1,341 @@
+
+*{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.inmobiliaria-nav{
+    font-size: 16pt;
+    background-color: #050A30 !important;
+    border-bottom: 4px solid #5CB6F9;
+}
+
+.inmobiliaria-nav .container-fluid a{
+    font-size: 16pt;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+  
+.navbar-nav .nav-item a,
+.navbar-nav .nav-item button {
+    margin-top: 5px;
+}
+
+
+
+body {
+    background-color: #050A30;
+    margin: 0; 
+    padding: 0;
+    height: 1240px;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, #004AAD,#CB6CE6);
+    color: white;
+    padding: 10px 20px;
+  }
+  
+  .user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 20px;
+  }
+  
+  .user-info {
+    flex-grow: 1;
+  }
+  
+  .user-name {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .user-rating {
+    font-size: 0.9em;
+    color:white;
+  }
+  
+  .user-rating.star {
+    color: #ffd700 ;
+    margin-right: 3px;
+  }
+  
+  .user-tab {
+    flex-grow: 1;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .user-tab:hover {
+    background-color: #050A30;
+  }
+  
+  .container {
+    display: inline-flex;
+    justify-content: flex-start; 
+    background-color: #050A30;
+    margin: 0; 
+    padding: 0;
+    width: 100px;
+  }
+  
+  .button {
+    background-color: #050A30;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 0;
+    text-decoration: none;
+    font-weight: bold;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%); /* Contorno diagonal */
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    border: 2px solid black;
+  }
+  
+  .button:hover {
+    background-color: white;
+  }
+  
+  .inmuebles {
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .inmuebles:hover {
+    background-color: #ddd;
+  }
+  
+  .inmuebles {
+    position: relative;
+  }
+  
+  .inmuebles::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    z-index: -1;
+  }
+  
+  .button:first-child {
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .button:last-child {
+    border-radius: 0 5px 5px 0;
+  }
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: #1D1D5C;
+}
+
+th, td {
+    border: 1px solid #fff;
+    padding: 10px;
+    text-align: left;
+    color: white;
+}
+
+th {
+    background-color: #1D1D5C;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status.rent {
+    background-color: #00D366;
+}
+
+.status.sale {
+    background-color: #00D366;
+}
+
+.status.rented {
+    background-color: #FF4646;
+}
+
+.profile-icon {
+    height: 100px;
+    border-radius: 5px;
+}
+.imagenes-inmuebles{
+    height: 240px;
+}
+footer{
+    background: linear-gradient(to right, #004AAD,#CB6CE6);
+    color: white;
+    height: 100px;
+}
+footer img{
+    position: relative;
+    left: 40px;
+    bottom: 5px;
+}
+
+footer .linea{
+    background-color: #CAE8FF;
+    height: 100px;
+    width: 4px;
+}
+
+footer .titulo{
+    margin-top: 30px;
+    margin-right: 40px;
+    color: #CAE8FF;
+}
+
+footer .ingenieros{
+    margin-top: 30px;
+    margin-left: 40px;
+    color:#CAE8FF;
+}
+
+.user-profileCitas{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #004AAD,#CB6CE6);
+  color: white;
+  padding: 10px 20px;
+}
+
+.user-infoCitas{
+  flex-grow: 1;
+}
+
+.user-profileCitas img{
+  height: 100px;
+}
+
+
+.user-nameCitas{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.user-ratingCitas{
+  font-size: 0.9em;
+  color:white;
+}
+
+.citas {
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .citas:hover {
+    background-color: #ddd;
+  }
+  
+  .citas {
+    position: relative;
+  }
+  
+  .citas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    z-index: -1;
+  }
+  
+  .button:first-child {
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .button:last-child {
+    border-radius: 0 5px 5px 0;
+  }
+  
+  .opiniones::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    z-index: -1;
+  }
+  
+  .button:first-child {
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .button:last-child {
+    border-radius: 0 5px 5px 0;
+  }
+
+.user-avatarOpiniones{
+  height: 100px; 
+  border-radius: 80%; 
+  margin-right: 80px;
+}
+
+.user-profileOpiniones{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #004AAD, #CB6CE6);
+  color: white;
+  padding: 10px 20px;
+}
+
+.user-infoOpiniones{
+  flex-grow: 1;
+}
+
+.user-nameOpiniones{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.containerOpiniones{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; 
+  width: 100%;
+  height: auto;
+}
+
+.containerOpiniones .cardOpiniones{
+  background-color: #727e96;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.973);
+  overflow: hidden;
+  width: 400px;
+  margin: 20px 10px;
+  height: 350px;
+  text-align: center;
+}
+.containerOpiniones .cardOpiniones .contentOpiniones{
+  padding: 10px;
+}
+
+.containerOpiniones .cardOpiniones img{
+  height: 100px;
+} 

@@ -8,6 +8,8 @@ import { InmueblesarriendoComponent } from './inmueblesarriendo/inmueblesarriend
 import { AgregarinmuebleComponent } from './agregarinmueble/agregarinmueble.component';
 import { InmuebleComponent } from './inmueble/inmueble.component';
 import { RegistroinmuebleComponent } from './registroinmueble/registroinmueble.component';
+import { MenuadminComponent } from './menuadmin/menuadmin.component';
+import { MenucomercialComponent } from './menucomercial/menucomercial.component';
 
 
 const routes: Routes = [
@@ -18,7 +20,9 @@ const routes: Routes = [
   { path: 'inmueblesarriendo', component: InmueblesarriendoComponent},
   { path: 'agregarinmueble' , component: AgregarinmuebleComponent},
   { path: 'inmueble/:id', component: InmuebleComponent},
-  {path: 'registrarinmueble/:id/:descripcion', component: RegistroinmuebleComponent},
+  { path: 'registrarinmueble/:id/:descripcion', component: RegistroinmuebleComponent},
+  { path: 'menuadmin',component: MenuadminComponent},
+  { path: 'menucomercial',component: MenucomercialComponent},
   { path: '**', redirectTo: '' } 
 ];
 

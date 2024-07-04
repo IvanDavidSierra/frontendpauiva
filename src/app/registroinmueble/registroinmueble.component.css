@@ -271,26 +271,29 @@ input[type=number] {
     border-bottom: 4px solid #CAE8FF;
 }
 
-.register-form .comerciales-descripcion .columns{
+.register-form .comerciales-descripcion .columns {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
 }
 
 .register-form .comerciales-descripcion .columns .left-column,
-.right-column{
+.right-column {
     flex: 1;
     padding: 10px;
 }
 
-.register-form .comerciales-descripcion .columns .left-column .btn-group{
-    width: 320px;
+.register-form .comerciales-descripcion .columns .left-column .btn-group {
+    width: 290px;
     height: 300px;
     border: 6px dashed white;
     position: relative;
+    margin-bottom: 10px; /* Espacio entre filas */
+    margin-left: 10px;
 }
 
-.register-form .comerciales-descripcion .columns .left-column .btn-group input[type="radio"]{
+.register-form .comerciales-descripcion .columns .left-column .btn-group input[type="radio"] {
     display: none;
 }
 
@@ -317,8 +320,7 @@ input[type=number] {
     right: 0;
     bottom: 0;
     border: 6px dashed black; /* Cambia el color del borde cuando está checked */
-    z-index: 0; 
-
+    z-index: 0;
 }
 
 .comerciales-descripcion .btn-group input[type="radio"]:checked + label {
@@ -326,6 +328,7 @@ input[type=number] {
     color: white;
     background-color: #050A30;
 }
+
 
 textarea.form-control {
     background-color: transparent;

@@ -1,0 +1,88 @@
+
+*{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.inmobiliaria-nav{
+    font-size: 16pt;
+    background-color: #050A30 !important;
+    border-bottom: 4px solid #5CB6F9;
+}
+
+.inmobiliaria-nav .container-fluid a{
+    font-size: 16pt;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+  
+.navbar-nav .nav-item a,
+.navbar-nav .nav-item button {
+    margin-top: 5px;
+}
+
+main{
+    padding-top: 100px;
+    background-color: #050A30;
+    height: 1080px;
+}
+.card{
+    width: 1500px;
+    margin-left: 10%;
+}
+
+.table-container {
+    max-height: 800px; 
+    overflow-y: scroll;
+}
+
+.table-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .table-container {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+
+.table{
+    font-size: 20pt;
+    width: 100%;
+    border-collapse: collapse;
+}
+.inmueble-content img {
+    max-width: 120px; /* Ajusta el tamaño máximo de la imagen según tus necesidades */
+}
+
+footer{
+    background: linear-gradient(to right, #004AAD,#CB6CE6);
+    color: white;
+    height: 100px;
+}
+footer img{
+    position: relative;
+    left: 40px;
+    bottom: 5px;
+}
+
+footer .linea{
+    background-color: #CAE8FF;
+    height: 100px;
+    width: 4px;
+}
+
+footer .titulo{
+    margin-top: 30px;
+    margin-right: 40px;
+    color: #CAE8FF;
+}
+
+footer .ingenieros{
+    margin-top: 30px;
+    margin-left: 40px;
+    color:#CAE8FF;
+}

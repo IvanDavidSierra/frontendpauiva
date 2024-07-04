@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { Clientes } from '../Modelos/clientes.modelo';
-import { FormGroup, FormBuilder} from '@angular/forms';
-import { TipoCliente } from '../Modelos/tipocliente.modelo';
+import { Clientes } from '../modelos/clientes.modelo';
+import { FormGroup} from '@angular/forms';
+import { TipoCliente } from '../modelos/tipocliente.modelo';
 import { AuthempleadoService } from '../authempleado.service';
-import { Empleados } from '../Modelos/empleados.modelo';
+import { Empleados } from '../modelos/empleados.modelo';
+import { TipoEmpleado } from '../modelos/tipoempleado.modelo';
 
 interface LoginCliente {
+  correo: string;
+}
+
+interface LoginEmpleado{
   correo: string;
 }
 
@@ -19,6 +24,7 @@ interface LoginCliente {
 })
 export class AuthusersComponent{
   loginCliente: LoginCliente = { correo: ''};
+  loginEmpleado: LoginEmpleado = { correo: ''};
   
   clienteNatural: Clientes = {
     idcliente: 0,
@@ -57,6 +63,8 @@ export class AuthusersComponent{
   errorRegistro: string = '';
   loginForm!: FormGroup;
   selectedForm: string = 'personaNatural';
+  isClientEmailValid: boolean = false;
+  isEmployeeEmailValid: boolean = false;
 
   
 
@@ -85,6 +93,11 @@ export class AuthusersComponent{
     this.router.navigate(["/inmueblesarriendo"]);
   }
 
+  checkInputs() {
+    this.isClientEmailValid = this.loginCliente.correo.trim() !== '';
+    this.isEmployeeEmailValid = this.loginEmpleado.correo.trim() !== '';
+  }
+
   login() {
     if (!this.loginCliente.correo) {
       alert('Por favor, complete todos los campos.');
@@ -103,13 +116,13 @@ export class AuthusersComponent{
   }
 
   
-  IniciarSesionEmpleado(){
-    if (!this.loginCliente.correo) {
+  IniciarSesionEmpleado() {
+    if (!this.loginEmpleado.correo) {
       alert('Por favor, complete todos los campos.');
       return;
     }
 
-    this.authEmpleadoService.loginEmpleados(this.loginCliente.correo).subscribe(
+    this.authEmpleadoService.loginEmpleados(this.loginEmpleado.correo).subscribe(
       (response: Empleados) => {
         this.authEmpleadoService.setCurrentUser(response);
         this.router.navigate(['/profile']);

@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TipoCliente } from './Modelos/tipocliente.modelo';
+import { TipoCliente } from './modelos/tipocliente.modelo';
 import { Observable } from 'rxjs';
-import { TipoEmpleado } from './Modelos/tipoempleado.modelo';
+import { TipoEmpleado } from './modelos/tipoempleado.modelo';
 
 @Injectable({
   providedIn: 'root'

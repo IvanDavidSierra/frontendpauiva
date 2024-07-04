@@ -14,6 +14,8 @@ import { InmueblesarriendoComponent } from './inmueblesarriendo/inmueblesarriend
 import { AgregarinmuebleComponent } from './agregarinmueble/agregarinmueble.component';
 import { InmuebleComponent } from './inmueble/inmueble.component';
 import { RegistroinmuebleComponent } from './registroinmueble/registroinmueble.component';
+import { MenuadminComponent } from './menuadmin/menuadmin.component';
+import { MenucomercialComponent } from './menucomercial/menucomercial.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { RegistroinmuebleComponent } from './registroinmueble/registroinmueble.c
     InmueblesarriendoComponent,
     InmuebleComponent,
     AgregarinmuebleComponent,
-    RegistroinmuebleComponent  
+    RegistroinmuebleComponent,
+    MenuadminComponent,
+    MenucomercialComponent  
   ],
   imports: [
     BrowserModule,

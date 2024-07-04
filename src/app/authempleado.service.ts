@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { TipoEmpleadoService } from './tipo-empleado.service';
 import { Observable, catchError, of } from 'rxjs';
-import { Empleados } from './Modelos/empleados.modelo';
-import { TipoEmpleado } from './Modelos/tipoempleado.modelo';
+import { Empleados } from './modelos/empleados.modelo';
+import { TipoEmpleado } from './modelos/tipoempleado.modelo';
 
 
 @Injectable({
@@ -26,7 +26,7 @@ export class AuthempleadoService {
 
   setCurrentUser(user: Empleados) {
     this.currentUserEmpleado = user;
-    localStorage.setItem('currentUser', JSON.stringify(user));
+    localStorage.setItem('currentUserEmpleado', JSON.stringify(user));
   }
 
   getCurrentUser(): Empleados | null {
@@ -49,8 +49,8 @@ export class AuthempleadoService {
 
   logout() {
     this.currentUserEmpleado = null;
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/login']);
+    localStorage.removeItem('currentUserEmpleado');
+    this.router.navigate(['/home']);
   }
 
 

@@ -1,30 +1,31 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
 import { Clientes } from '../modelos/clientes.modelo';
-import { InmuebleService } from '../inmueble.service';
 import { Inmueble } from '../modelos/inmueble.modelo';
 import { Empleados } from '../modelos/empleados.modelo';
+import { InmuebleService } from '../inmueble.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { AuthempleadoService } from '../authempleado.service';
 
 @Component({
-  selector: 'app-inmueblesarriendo',
-  templateUrl: './inmueblesarriendo.component.html',
-  styleUrl: './inmueblesarriendo.component.css'
+  selector: 'app-menucomercial',
+  templateUrl: './menucomercial.component.html',
+  styleUrl: './menucomercial.component.css'
 })
-export class InmueblesarriendoComponent {
+export class MenucomercialComponent {
+  inmuebles: Inmueble[] = [];
   currentUser: Clientes | null = null;
   currentUserEmpleado: Empleados | null = null;
-  inmuebles: Inmueble[] = [];
-
-  
-  constructor(private router: Router, private authService: AuthService,private inmuebleService: InmuebleService, private authEmpleadoService: AuthempleadoService) { 
+  selectedTable: string = 'inmuebles';
+  showInmuebles: boolean = true; 
+  showCitas: boolean = false;
+  showOpiniones: boolean = false;
+  constructor(private router: Router,private authService: AuthService, private authEmpleadoService: AuthempleadoService) {
     this.currentUser = this.authService.getCurrentUser();
     this.currentUserEmpleado = this.authEmpleadoService.getCurrentUser();
-    this.inmuebleService.listar().subscribe(data => {
-      this.inmuebles = data;
-    });
+
   }
+
   entrarAInmueblesArriendo(){
     this.router.navigate(["/inmueblesarriendo"]);}
 
@@ -36,6 +37,12 @@ export class InmueblesarriendoComponent {
   }
   navigateToProfile() {
     this.router.navigate(['/profile']);
+  }
+
+  selectTable(option: string): void {
+    this.showInmuebles = option === 'inmuebles';
+    this.showCitas = option === 'citas';
+    this.showOpiniones = option === 'opiniones';
   }
 
   logout() {

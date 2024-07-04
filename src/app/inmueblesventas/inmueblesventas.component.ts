@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Clientes } from '../Modelos/clientes.modelo';
+import { Clientes } from '../modelos/clientes.modelo';
 import { AuthService } from '../auth.service';
-import { Inmueble } from '../Modelos/inmueble.modelo';
+import { Inmueble } from '../modelos/inmueble.modelo';
 import { InmuebleService } from '../inmueble.service';
+import { Empleados } from '../modelos/empleados.modelo';
+import { AuthempleadoService } from '../authempleado.service';
 
 @Component({
   selector: 'app-inmueblesventas',
@@ -12,9 +14,12 @@ import { InmuebleService } from '../inmueble.service';
 })
 export class InmueblesventasComponent {
   currentUser: Clientes | null = null;
+  currentUserEmpleado: Empleados | null = null;
   inmuebles: Inmueble[] = [];
-  constructor(private router: Router, private authService: AuthService,private inmuebleService: InmuebleService) { 
+
+  constructor(private router: Router, private authService: AuthService,private inmuebleService: InmuebleService, private authEmpleadoService: AuthempleadoService) { 
     this.currentUser = this.authService.getCurrentUser();
+    this.currentUserEmpleado = this.authEmpleadoService.getCurrentUser();
     this.inmuebleService.listar().subscribe(data => {
       this.inmuebles = data;
     });
@@ -35,7 +40,9 @@ export class InmueblesventasComponent {
 
   logout() {
     this.authService.logout();
+    this.authEmpleadoService.logout();
     this.currentUser = null;
+    this.currentUserEmpleado = null;
     this.router.navigate(['/home']);
   }
   

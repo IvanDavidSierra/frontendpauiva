@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Inmueble } from './Modelos/inmueble.modelo';
+import { Inmueble } from './modelos/inmueble.modelo';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TipoInmueble } from './Modelos/tipoinmueble.modelo';
+import { TipoInmueble } from './modelos/tipoinmueble.modelo';
 
 @Injectable({
   providedIn: 'root'
@@ -22,24 +22,20 @@ export class InmuebleService {
     return this.http.get<Inmueble>(`${this.apiUrl}/${id}`);
   }
 
-  agregarInmueble(foto: File, inmueble: Inmueble, comercialId: number): Observable<any> {
-    const formData = new FormData();
-    formData.append('foto', foto);
-    formData.append('inmueble', JSON.stringify(inmueble));
-    formData.append('comercialId', String(comercialId));
-
-    // Opciones para la solicitud HTTP que incluyen encabezados adicionales si es necesario
-    const options = {
-      headers: new HttpHeaders({
-        'Accept': 'application/json'
-      })
-    };
-
-    return this.http.post<any>(this.apiUrl, formData, options);
+  agregarInmueble(inmueble: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}`, inmueble);
   }
 
   listarTipoInmueble(): Observable<TipoInmueble[]>{
     return this.http.get<TipoInmueble[]>(this.apiTipoInmubleUrl)
+  }
+
+  update(id: number, inmueble: Inmueble): Observable<Inmueble> {
+    return this.http.put<Inmueble>(`${this.apiUrl}/${id}`, inmueble);
+  }
+
+  delete(id: number): Observable<Inmueble> {
+    return this.http.delete<Inmueble>(`${this.apiUrl}/${id}`);
   }
 
   setTipoInmueble(tipo: number) {

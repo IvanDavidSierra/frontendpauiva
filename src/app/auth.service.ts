@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Clientes } from '../app/Modelos/clientes.modelo';
+import { Clientes } from './modelos/clientes.modelo';
 import { Router } from '@angular/router';
 import { TipoClienteService } from './tipo-cliente.service';
-import { TipoCliente } from './Modelos/tipocliente.modelo';
-import { TipoEmpleado } from './Modelos/tipoempleado.modelo';
+import { TipoCliente } from './modelos/tipocliente.modelo';
+import { TipoEmpleado } from './modelos/tipoempleado.modelo';
 
 @Injectable({
   providedIn: 'root'
@@ -68,7 +68,7 @@ export class AuthService {
   logout() {
     this.currentUser = null;
     localStorage.removeItem('currentUser');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

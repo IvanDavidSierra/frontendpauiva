@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { Inmueble } from '../Modelos/inmueble.modelo';
+import { Inmueble } from '../modelos/inmueble.modelo';
 import { InmuebleService } from '../inmueble.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { Clientes } from '../Modelos/clientes.modelo';
+import { Clientes } from '../modelos/clientes.modelo';
+import { AuthempleadoService } from '../authempleado.service';
+import { Empleados } from '../modelos/empleados.modelo';
 
 @Component({
   selector: 'app-inmueble',
@@ -13,8 +15,10 @@ import { Clientes } from '../Modelos/clientes.modelo';
 export class InmuebleComponent {
   inmueble: Inmueble | undefined;
   currentUser: Clientes | null = null;
-  constructor(private inmuebleService: InmuebleService, private router: Router,private authService: AuthService, private route: ActivatedRoute ) {
+  currentUserEmpleado: Empleados | null = null;
+  constructor(private inmuebleService: InmuebleService, private router: Router,private authService: AuthService, private route: ActivatedRoute, private authEmpleadoService: AuthempleadoService) {
     this.currentUser = this.authService.getCurrentUser();
+    this.currentUserEmpleado = this.authEmpleadoService.getCurrentUser();
     this.getInmueble();
   }
 
@@ -45,7 +49,9 @@ export class InmuebleComponent {
   }
   logout() {
     this.authService.logout();
+    this.authEmpleadoService.logout();
     this.currentUser = null;
+    this.currentUserEmpleado = null;
     this.router.navigate(['/home']);
   }
 }

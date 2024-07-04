@@ -36,12 +36,12 @@
           <li class="nav-item">
             <a class="nav-link active text-white fw-bold" href="#">Contacto</a>
           </li>
-          <li class="nav-item" *ngIf="!currentUser">
+          <li class="nav-item" *ngIf="!currentUser && !currentUserEmpleado">
             <a (click)="navigateToAuthUsers()" class="btn btn-primary"
               style="background-color: #CAE8FF; color: black; border: none; position: relative; top: 5px; margin-left: 10px;">Iniciar
               Sesion</a>
           </li>
-          <li class="nav-item" *ngIf="currentUser">
+          <li class="nav-item" *ngIf="currentUser || currentUserEmpleado">
             <a (click)="navigateToProfile()" style="margin-right: 20px;">
               <img src="profile-icon.png" alt="Profile Image" class="rounded-circle" height="60"
                 style="cursor: pointer;">

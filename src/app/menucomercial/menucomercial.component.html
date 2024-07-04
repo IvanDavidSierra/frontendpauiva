@@ -1,0 +1,242 @@
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary inmobiliaria-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white fs-3 fw-bold" href="#">
+                <img src="logo.png" alt="logo inalpes" width="240" height="120" class="d-inline-block align-text"
+                    style="position: relative; left:70px;">
+                Inmobiliaria inAlpes
+            </a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white fw-bold" aria-current="page" href="#">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white text-white fw-bold" href="#">Servicios</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active text-white fw-bold" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Inmuebles
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" (click)="irAInmueblesVentas()">Venta</a></li>
+                            <li><a class="dropdown-item" (click)="entrarAInmueblesArriendo()">Arriendo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white fw-bold" href="#">Contacto</a>
+                    </li>
+                    <li class="nav-item" *ngIf="!currentUser && !currentUserEmpleado">
+                        <a (click)="navigateToAuthUsers()" class="btn btn-primary"
+                            style="background-color: #CAE8FF; color: black; border: none; position: relative; top: 5px; margin-left: 10px;">Iniciar
+                            Sesion</a>
+                    </li>
+                    <li class="nav-item" *ngIf="currentUser || currentUserEmpleado ">
+                        <a (click)="navigateToProfile()" style="margin-right: 20px;">
+                            <img src="profile-icon.png" alt="Profile Image" class="rounded-circle" height="60"
+                                style="cursor: pointer;">
+                            <button class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<body>
+    <!-- Sección de Inmuebles -->
+    <div *ngIf="showInmuebles">
+        <div class="user-profile">
+            <img src="profile-icon.png" class="profile-icon">
+            <div class="user-info">
+                <h2 class="user-name">{{ currentUserEmpleado?.nombre }} {{ currentUserEmpleado?.apellido }}</h2>
+                <p class="user-rating">CALIFICACIÓN: 4.0 <span class="star">★★★★★</span></p>
+            </div>
+        </div>
+
+        <div class="container">
+            <a (click)="selectTable('inmuebles')" class="button inmuebles">INMUEBLES</a>
+            <a (click)="selectTable('citas')" class="button citas">CITAS</a>
+            <a (click)="selectTable('opiniones')" class="button opiniones">OPINIONES</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Inmueble</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Propietario</th>
+                    <th>Interesado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="casa-menu3.jpg" alt="Bogotá/Alamos" class="imagenes-inmuebles"></td>
+                    <td>CASA MUY BUENA 👌🏽👍🏽💩</td>
+                    <td><span class="status rent">ARRIENDO</span></td>
+                    <td>JOSÉ JUAN VELÁSQUEZ</td>
+                    <td>NO HAY 😭</td>
+                </tr>
+                <tr>
+                    <td><img src="casa-menu.jpg" alt="Bogotá/Cedritos" class="imagenes-inmuebles"></td>
+                    <td>MENTIRAS NOSE</td>
+                    <td><span class="status sale">EN VENTA</span></td>
+                    <td>JOSÉ JUAN VELÁSQUEZ</td>
+                    <td>PAULA NICOLE PACHÓN</td>
+                </tr>
+                <tr>
+                    <td><img src="casa-menu2.jpg" alt="Bogotá/Calle Campestre" class="imagenes-inmuebles"></td>
+                    <td>PAN</td>
+                    <td><span class="status rented">ARRRENDADA</span></td>
+                    <td>JOSÉ JUAN VELÁSQUEZ</td>
+                    <td>CAMILO SÁNCHEZ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="showCitas">
+        <div class="user-profileCitas">
+            <img src="profile-icon.png">
+            <div class="user-infoCitas">
+                <h2 class="user-nameCitas">{{ currentUserEmpleado?.nombre }} {{ currentUserEmpleado?.apellido }}</h2>
+                <p class="user-ratingCitas">CALIFICACIÓN: 4.0 <span class="star">★★★★★</span></p>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <a (click)="selectTable('inmuebles')" class="button inmuebles">INMUEBLES</a>
+            <a (click)="selectTable('citas')" class="button citas">CITAS</a>
+            <a (click)="selectTable('opiniones')" class="button opiniones">OPINIONES</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Inmueble</th>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Estado</th>
+                    <th>Requisitos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="casa-menu3.jpg" alt="Bogotá/Alamos" class="imagenes-inmuebles"></td>
+                    <td>15 DE JUNIO 2024-15:00PM</td>
+                    <td>JOSE JUAN VELAZQUES</td>
+                    <td><span class="status rent">CITA REALIZADA</span></td>
+                    <td>OK</td>
+                </tr>
+                <tr>
+                    <td><img src="casa-menu.jpg" alt="Bogotá/Cedritos" class="imagenes-inmuebles"></td>
+                    <td>20 DE JUNIO DE 2024-15:00PM</td>
+                    <td>NIXON DUARTE</td>
+                    <td><span class="status sale"> CANCELADA</span></td>
+                    <td>NO APLICA</td>
+                </tr>
+                <tr>
+                    <td><img src="casa-menu2.jpg" alt="Bogotá/Calle Campestre" class="imagenes-inmuebles"></td>
+                    <td>30 DE JUNIO DE 2024-12:00PM</td>
+                    <td>IVAN SIERRA</td>
+                    <td><span class="status rented">PENDIENTE</span></td>
+                    <td>REALIZAR ESTUDIO</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div *ngIf="showOpiniones">
+        <div class="user-profileOpiniones">
+            <img src="profile-icon.png" class="user-avatarOpiniones" alt="Foto de perfil">
+            <div class="user-infoOpiniones">
+                <h2 class="user-nameOpiniones">{{ currentUserEmpleado?.nombre }} {{ currentUserEmpleado?.apellido }}</h2>
+                <p class="user-rating">CALIFICACIÓN: 4.0 <span class="star">★★★★★</span></p>
+            </div>
+        </div>
+        <nav class="menu">
+            <div class="comisiones">
+                <a (click)="selectTable('inmuebles')" class="button inmuebles">INMUEBLES</a>
+                <a (click)="selectTable('citas')" class="button citas">CITAS</a>
+                <a (click)="selectTable('opiniones')" class="button opiniones">OPINIONES</a>
+            </div>
+        </nav>
+        <div class="containerOpiniones">
+            <div class="cardOpiniones">
+                <img src="casa-cedritos.JPG" alt="Bogota/Cedritos">
+                <div class="contentOpiniones">
+                    <h3>Bogota/Cedritos</h3>
+                    <p>Camillo Sanchez</p>
+                    <p>Calificacion:</p>
+                    <p>★★★★★</p>
+                    <p>Muy buen asesor</p>
+                </div>
+            </div>
+            <div class="cardOpiniones">
+                <img src="casa-engativa.jpg" alt="Bogotá/ Cedritos">
+                <div class="contentOpiniones">
+                    <h3>Bogota/Alamos</h3>
+                    <p>Camillo Sanchez</p>
+                    <p>Calificacion:</p>
+                    <p>★★★★★</p>
+                    <p>Muy buen asesor</p>
+                </div>
+            </div>
+            <div class="cardOpiniones">
+                <img src="casa-colina.JPG" alt="Bogotá / Colina Campestre">
+                <div class="contentOpiniones">
+                    <h3>Bogotá / Colina Campestre</h3>
+                    <p>Camillo Sanchez</p>
+                    <p>Calificacion:</p>
+                    <p>★★★★★</p>
+                    <p>Muy buen asesor</p>
+                </div>
+            </div>
+            <div class="cardOpiniones">
+                <img src="casa-engativa.jpg" alt="Bogota/ Alamos">
+                <div class="contentOpiniones">
+                    <h3>Bogota/ Alamos</h3>
+                    <p>Camillo Sanchez</p>
+                    <p>Calificacion:</p>
+                    <p>★★★★★</p>
+                    <p>Muy buen asesor</p>
+                </div>
+            </div>
+            <div class="cardOpiniones">
+                <img src="Venta11.JPG" alt="Bogota/Cedritos">
+                <div class="contentOpiniones">
+                    <h3>Bogota/Cedritos</h3>
+                    <p>Camillo Sanchez</p>
+                    <p>Calificacion:</p>
+                    <p>★★★★★</p>
+                    <p>Muy buen asesor</p>
+                </div>
+            </div>
+            <div class="cardOpiniones">
+                <img src="casa-colina.JPG" alt="Bogotá/ Colina Campestre">
+                <div class="contentOpiniones">
+                    <h3>Bogota/Cedritos</h3>
+                    <p>Camillo Sanchez</p>
+                    <p>Calificacion:</p>
+                    <p>★★★★★</p>
+                    <p>Muy buen asesor</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<footer class="d-flex justify-content-center">
+    <img src="logo.png" alt="logo">
+    <h4 class="titulo"><b>Inmobiliaria inAlpes</b></h4>
+    <div class="linea"></div>
+    <h4 class="ingenieros"><b>Desarrollado por Ing. Paula e Ing. Iván</b></h4>
+</footer>

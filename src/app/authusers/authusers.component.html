@@ -4,7 +4,6 @@
   }
 </style>
 
-
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary inmobiliaria-nav">
     <div class="container-fluid">
@@ -61,14 +60,19 @@
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label fw-bold">Correo Electrónico</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                   placeholder="Ingresa tu correo electrónico..." [(ngModel)]="loginCliente.correo" name="correoLogin" required>
+                   placeholder="Ingresa tu correo electrónico..." [(ngModel)]="loginCliente.correo" name="correoLoginCliente" required (input)="checkInputs()">
+          </div>
+          <div class="mb-3">
+            <label for="correoLoginEmpleado" class="form-label fw-bold">Correo Electrónico Empleado</label>
+            <input type="email" class="form-control" id="correoLoginEmpleado" aria-describedby="emailHelp"
+                   placeholder="Ingresa tu correo electrónico..." [(ngModel)]="loginEmpleado.correo" name="correoLoginEmpleado" required (input)="checkInputs()">
           </div>
           <div *ngIf="loginForm.submitted && loginForm.controls['correoLogin'].invalid" class="text-danger">
             El correo es requerido.
           </div>
           <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-primary" (click)="login()" [disabled]="!loginForm.form.valid">Entrar como Cliente</button>
-            <button style="position: relative; right: 250px; top:328px;" type="button" class="btn btn-secondary" (click)="IniciarSesionEmpleado()" [disabled]="!loginForm.form.valid">Entrar como Empleado</button>
+            <button type="button" class="btn btn-primary" (click)="login()" [disabled]="!isClientEmailValid">Entrar como Cliente</button>
+            <button style="position: relative; right: 250px; top:243px;" type="button" class="btn btn-secondary" (click)="IniciarSesionEmpleado()" [disabled]="!isEmployeeEmailValid">Entrar como Empleado</button>
         </div>
         </form>
       </div>

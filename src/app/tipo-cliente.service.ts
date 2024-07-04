@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TipoCliente } from './Modelos/tipocliente.modelo';
+import { TipoCliente } from './modelos/tipocliente.modelo';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
